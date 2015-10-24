@@ -3,23 +3,6 @@
   "version": "1.0.0",
   "description": "Common build tasks for SkateJS projects.",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/skatejs/build.git"
-  },
-  "keywords": [
-    "skatejs",
-    "build"
-  ],
-  "author": "Trey Shugart <treshugart@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/skatejs/build/issues"
-  },
-  "homepage": "https://github.com/skatejs/build#readme",
   "dependencies": {
     "benchmark": "1.0.0",
     "del": "2.0.2",
@@ -48,5 +31,22 @@
     "lodash": "3.10.1",
     "merge-stream": "1.0.0",
     "mocha": "2.3.3"
-  }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skatejs/build.git"
+  },
+  "keywords": [
+    "skatejs",
+    "build"
+  ],
+  "author": "Trey Shugart <treshugart@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/skatejs/build/issues"
+  },
+  "homepage": "https://github.com/skatejs/build#readme"
 }
