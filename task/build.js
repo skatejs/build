@@ -14,10 +14,10 @@ function task () {
       .pipe(galv.trace())
       .pipe(gulpBabel())
       .pipe(galv.globalize())
-      .pipe(gulpConcat('skate.js'))
+      .pipe(gulpConcat('index.js'))
       .pipe(gulp.dest('dist'))
       .pipe(gulpUglify())
-      .pipe(gulpConcat('skate.min.js'))
+      .pipe(gulpConcat('index.min.js'))
       .pipe(gulp.dest('dist'))
       .pipe(gulpDebug({ title: 'dist' })),
     gulp.src('src/index.js')
