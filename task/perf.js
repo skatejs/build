@@ -37,7 +37,6 @@ module.exports = function (opts, done) {
         browsers: opts.browsers.split(','),
         client: { args: args },
         files: [
-          'node_modules/benchmark/benchmark.js',
           '.tmp/perf.js'
         ],
         frameworks: ['mocha', 'sinon-chai']
