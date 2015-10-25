@@ -9,7 +9,7 @@ var Server = require('karma').Server;
 var benchFilter = gulpFilter(['**', '!**/benchmark.js'], { restore: true });
 var filterEverythingExceptWebcomponents = gulpFilter(['**/*','!**/webcomponents.js/**/*'], { restore: true });
 
-module.exports = function (opts) {
+module.exports = function (opts, done) {
   var args = [];
   opts = assign({
     browsers: 'Firefox'
@@ -42,6 +42,7 @@ module.exports = function (opts) {
         ],
         frameworks: ['mocha', 'sinon-chai']
       }, function finishTaskAndExit (exitCode) {
+        done();
         process.exit(exitCode);
       }).start();
     });
