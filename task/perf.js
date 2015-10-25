@@ -19,7 +19,7 @@ module.exports = function (opts, done) {
     args.push(opts.grep);
   }
 
-  return gulp.src(['test/perf.js'])
+  gulp.src(['test/perf.js'])
     .pipe(galv.trace())
     .pipe(filterEverythingExceptWebcomponents)
     .pipe(galv.cache('babel', gulpBabel()))
