@@ -31,7 +31,11 @@ module.exports = function (opts, done) {
     config = assign(config, {
       sauceLabs: {
         testName: 'Skate unit tests (master)',
-        recordScreenshots: false
+        recordScreenshots: false,
+        connectOptions: {
+          verbose: true,
+          verboseDebugging: true
+        }
       },
       customLaunchers: saucelabsLaunchers,
       browsers: Object.keys(saucelabsLaunchers),
