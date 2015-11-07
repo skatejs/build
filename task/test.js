@@ -2,13 +2,13 @@ var assign = require('lodash/object/assign');
 var buildTest = require('./build-test');
 var Server = require('karma').Server;
 
-module.exports = function (opts, done) {
+module.exports = function (done) {
   var args = [];
   opts = assign({
     singleRun: true,
     watch: false,
     browsers: ['Firefox', 'Chrome'].join(',')
-  }, opts);
+  }, this);
 
   if (opts.grep) {
     args.push('--grep');

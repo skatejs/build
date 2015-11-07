@@ -9,9 +9,7 @@ var merge = require('merge-stream');
 
 function task () {
   merge(
-    gulp.src('src/global.js')
-      .pipe(gulpDebug({ title: 'trace' }))
-      .pipe(galv.trace())
+    galv.trace('src/global.js').createStream()
       .pipe(gulpBabel())
       .pipe(galv.globalize())
       .pipe(gulpConcat('index.js'))
@@ -20,9 +18,7 @@ function task () {
       .pipe(gulpConcat('index.min.js'))
       .pipe(gulp.dest('dist'))
       .pipe(gulpDebug({ title: 'dist' })),
-    gulp.src('src/index.js')
-      .pipe(gulpDebug({ title: 'trace' }))
-      .pipe(galv.trace())
+    galv.trace('src/index.js').createStream()
       .pipe(gulpBabel({ modules: 'umd' }))
       .pipe(gulpRename(function (path) {
         path.dirname = path.dirname.replace(/^src/, '.');

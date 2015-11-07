@@ -1,22 +1,16 @@
+var assign = require('object-assign');
 var galv = require('galvatron');
+var gulp = require('gulp');
 var test = require('./test');
-var buildTest = require('./build-test');
+var testBuild = require('./test-build');
 var _ = require('lodash');
 
-
-
-module.exports = function (opts, done) {
-  var startKarmaWatch = _.once(function () {
-    opts.watch = true;
-    opts.singleRun = false;
-    test(opts, done);
-  });
-
-  galv.watch(['src/**', 'test/**'], function () {
-    buildTest(opts)
-      .on('error', function (e) {
-        throw e;
-      })
-      .on('end', startKarmaWatch);
-  });
+module.exports = function (done) {
+  test.call(assign({
+    singleRun: false,
+    watch: true
+  }, this), done);
+  gulp.watch(['src/**', 'test/**'])
+    .on('change', galv.cache.expire)
+    .on('change', testBuild);
 };
