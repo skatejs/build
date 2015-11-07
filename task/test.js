@@ -1,6 +1,6 @@
 var assign = require('lodash/object/assign');
-var buildTest = require('./build-test');
 var Server = require('karma').Server;
+var testBuild = require('./test-build');
 
 module.exports = function (done) {
   var args = [];
@@ -47,7 +47,7 @@ module.exports = function (done) {
     });
   }
 
-  buildTest(opts)
+  testBuild(opts)
     .on('error', function (e) {
       throw e;
     })

@@ -6,7 +6,6 @@ var gulpDebug = require('gulp-debug');
 var gulpFilter = require('gulp-filter');
 var gulpLess = require('gulp-less');
 var gulpMinifyCss = require('gulp-minify-css');
-var gulpRename = require('gulp-rename');
 var gulpUglify = require('gulp-uglify');
 
 module.exports = function () {
@@ -37,9 +36,6 @@ module.exports = function () {
     .pipe(gulp.dest('dist'))
     .pipe(gulpDebug({ title: 'less' }))
     .pipe(filterLess.restore)
-
-    // Flatten all files into `dist`.
-    .pipe(gulpRename({ dirname: '.' }))
 
     // Icons must be in `dist/fonts`.
     .pipe(filterIcons)
