@@ -5,7 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "benchmark": "1.0.0",
-    "del": "2.0.2",
+    "del": "2.1.0",
     "eslint": "1.7.3",
     "galvatron": "treshugart/galvatron#9e4e89a",
     "gulp-auto-task": "treshugart/gulp-auto-task#6cd72e0",
