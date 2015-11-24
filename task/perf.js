@@ -1,5 +1,6 @@
 var assign = require('lodash/object/assign');
 var galv = require('galvatron');
+var gat = require('gulp-auto-task');
 var gulp = require('gulp');
 var gulpBabel = require('gulp-babel');
 var gulpConcat = require('gulp-concat');
@@ -9,11 +10,11 @@ var Server = require('karma').Server;
 var benchFilter = gulpFilter(['**', '!**/benchmark.js'], { restore: true });
 var filterEverythingExceptWebcomponents = gulpFilter(['**/*','!**/webcomponents.js/**/*'], { restore: true });
 
-module.exports = function (opts, done) {
+module.exports = function (done) {
   var args = [];
-  opts = assign({
+  var opts = assign({
     browsers: 'Firefox'
-  }, opts);
+  }, gat.opts());
 
   if (opts.grep) {
     args.push('--grep');

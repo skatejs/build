@@ -1,16 +1,16 @@
-var assign = require('object-assign');
 var galv = require('galvatron');
+var gat = require('gulp-auto-task');
 var gulp = require('gulp');
 var test = require('./test');
 var testBuild = require('./test-build');
-var _ = require('lodash');
 
-module.exports = function (done) {
-  test.call(assign({
+module.exports = gulp.series(
+  test.create(gat.opts({
     singleRun: false,
     watch: true
-  }, this), done);
-  gulp.watch(['src/**', 'test/**'])
-    .on('change', galv.cache.expire)
-    .on('change', testBuild);
-};
+  })),
+  function watch (done) {
+    gulp.watch(['src/**', 'test/**'], testBuild).on('change', galv.cache.expire);
+    done();
+  }
+);

@@ -1,8 +1,8 @@
-'use strict';
-
+var assign = require('object-assign');
 var cwd = process.cwd();
-var path = require('path');
 var fs = require('fs');
+var gat = require('gulp-auto-task');
+var path = require('path');
 var pkg = require(path.join(cwd, '/package.json'));
 var semver = require('semver');
 var sh = require('shelljs');
@@ -13,11 +13,14 @@ function replace (file, pattern, replacement) {
   fs.writeFileSync(file, str);
 };
 
-module.exports = function () {
+module.exports = function (done) {
+  var opts = assign({
+    type: 'patch'
+  }, gat.opts());
   var currentVersion = pkg.version;
-  var nextVersion = this.semver || semver.inc(
+  var nextVersion = opts.semver || semver.inc(
     currentVersion,
-    this.type || 'patch'
+    opts.type
   );
 
   sh.exec('npm run lint');
@@ -31,4 +34,5 @@ module.exports = function () {
   sh.exec('git push');
   sh.exec('git push --tags');
   sh.exec('npm publish');
+  done();
 };

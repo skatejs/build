@@ -7,8 +7,9 @@
     "benchmark": "1.0.0",
     "del": "2.0.2",
     "eslint": "1.7.3",
-    "galvatron": "treshugart/galvatron#9e4e89a",
-    "gulp-auto-task": "treshugart/gulp-auto-task#6cd72e0",
+    "galvatron": "treshugart/galvatron#3e91b19",
+    "gulp": "gulpjs/gulp#3311fca",
+    "gulp-auto-task": "treshugart/gulp-auto-task#80993d3",
     "gulp-babel": "5.3.0",
     "gulp-concat": "2.6.0",
     "gulp-debug": "2.1.2",
@@ -28,14 +29,10 @@
     "karma-sauce-launcher": "0.3.0",
     "karma-sinon-chai": "1.1.0",
     "lodash": "3.10.1",
-    "merge-stream": "1.0.0",
     "mocha": "2.3.3",
     "object-assign": "^4.0.1",
     "semver": "^5.0.3",
     "shelljs": "^0.5.3"
-  },
-  "peerDependencies": {
-    "gulp": "3.9.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

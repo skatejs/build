@@ -1,4 +1,1 @@
-require('gulp-auto-task')({
-  base: __dirname + '/task',
-  gulp: require('gulp')
-});
+require('gulp-auto-task').init();
