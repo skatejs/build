@@ -4,7 +4,7 @@
   "description": "Common build tasks for SkateJS projects.",
   "main": "index.js",
   "dependencies": {
-    "benchmark": "1.0.0",
+    "benchmark": "2.0.0",
     "del": "2.0.2",
     "eslint": "1.7.3",
     "galvatron": "treshugart/galvatron#2e399eb",
