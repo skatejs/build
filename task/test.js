@@ -32,7 +32,7 @@ function test (opts) {
       var saucelabsLaunchers = require('../lib/saucelabs-launchers');
       config = assign(config, {
         sauceLabs: {
-          testName: 'Skate unit tests (master)',
+          testName: process.env.SAUCE_TESTNAME || 'Skate unit tests (master)',
           recordScreenshots: false,
           connectOptions: {
             verbose: true,
