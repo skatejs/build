@@ -3,16 +3,17 @@ var fs = require('fs');
 var gat = require('gulp-auto-task');
 var gulp = require('gulp');
 var gulpBabel = require('gulp-babel');
-var gulpConcat = require('gulp-concat');
-var gulpDebug = require('gulp-debug');
-var gulpFilter = require('gulp-filter');
-var gulpIf = require('gulp-if');
+var gulpRename = require('gulp-rename');
+var gulpSourcemaps = require('gulp-sourcemaps');
 var gulpUglify = require('gulp-uglify');
 var path = require('path');
+var report = require('../lib/report');
 var rollup = require('rollup');
+var rollupBabel = require('rollup-plugin-babel');
 var rollupCommonjs = require('rollup-plugin-commonjs');
 var rollupNpm = require('rollup-plugin-npm');
 
+var opts = gat.opts();
 var tmpFile = 'src/global.js';
 var package = require(path.join(process.cwd(), 'package.json'));
 var packageMain = package['jsnext:main'] || package.main;
@@ -34,39 +35,55 @@ module.exports = gulp.series(
   function cleanBefore () {
     return del(['dist', 'lib', tmpFile]);
   },
-  function tmp (done) {
-    fs.writeFile(tmpFile, new Buffer(noConflictAndGlobal, 'utf-8').toString(), done);
-  },
   gulp.parallel(
-    function dist (done) {
-      var opts = gat.opts();
-      rollup.rollup({
-        entry: tmpFile,
-        plugins: [
-          rollupCommonjs({ include: 'node_modules/**' }),
-          rollupNpm({ jsnext: true, main: true })
-        ]
-      }).then(function (bundle) {
-        bundle.write({
-          dest: 'dist/index.js',
-          format: 'umd',
-          globals: opts.globals,
-          moduleName: package.name,
-          sourceMap: true,
-          useStrict: false
-        }).then(function () {
-          done();
+    gulp.series(
+      function tmp (done) {
+        fs.writeFile(tmpFile, new Buffer(noConflictAndGlobal, 'utf-8').toString(), done);
+      },
+      function dist (done) {
+        rollup.rollup({
+          entry: tmpFile,
+          plugins: [
+            rollupBabel({
+              presets: ['../node_modules/skatejs-build/node_modules/babel-preset-es2015-rollup']
+            }),
+            rollupCommonjs(),
+            rollupNpm()
+          ]
+        }).then(function (bundle) {
+          bundle.write({
+            dest: 'dist/index.js',
+            format: 'umd',
+            globals: opts.globals,
+            moduleName: package.name,
+            sourceMap: true,
+            useStrict: false
+          }).then(function () {
+            done();
+          }).catch(function (e) {
+            console.log(e);
+          });
         });
-      });
-    },
+      },
+      opts.max ? null : function uglify () {
+        return gulp.src('dist/index.js')
+          .pipe(gulpRename({ basename: 'index.min' }))
+          .pipe(gulpSourcemaps.init())
+          .pipe(report(gulpUglify()))
+          .pipe(gulpSourcemaps.write('.'))
+          .pipe(gulp.dest('dist'));
+      },
+      function cleanTmp () {
+        return del([tmpFile]);
+      }
+    ),
     function lib () {
       return gulp.src(['src/**/*.js'])
-        .pipe(gulpBabel({ modules: 'umd' }))
-        .pipe(gulpDebug({ title: 'lib' }))
+        .pipe(report(gulpBabel({
+          plugins: ['../node_modules/skatejs-build/node_modules/babel-plugin-transform-es2015-modules-umd'],
+          presets: ['../node_modules/skatejs-build/node_modules/babel-preset-es2015']
+        })))
         .pipe(gulp.dest('lib'));
     }
-  ),
-  function cleanAfter () {
-    return del([tmpFile]);
-  }
+  )
 );
