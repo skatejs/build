@@ -65,7 +65,10 @@ module.exports = gulp.series(
           });
         });
       },
-      opts.max ? null : function uglify () {
+      function uglify () {
+        if (opts.max) {
+          return;
+        }
         return gulp.src('dist/index.js')
           .pipe(gulpRename({ basename: 'index.min' }))
           .pipe(gulpSourcemaps.init())
