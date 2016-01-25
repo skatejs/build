@@ -52,6 +52,7 @@ module.exports = gulp.series(
           format: 'umd',
           globals: opts.globals,
           moduleName: package.name,
+          sourceMap: true,
           useStrict: false
         }).then(function () {
           done();
