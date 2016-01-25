@@ -1,6 +1,5 @@
 var del = require('del');
 var fs = require('fs');
-var galv = require('galvatron');
 var gat = require('gulp-auto-task');
 var gulp = require('gulp');
 var gulpBabel = require('gulp-babel');
@@ -10,6 +9,9 @@ var gulpFilter = require('gulp-filter');
 var gulpIf = require('gulp-if');
 var gulpUglify = require('gulp-uglify');
 var path = require('path');
+var rollup = require('rollup');
+var rollupCommonjs = require('rollup-plugin-commonjs');
+var rollupNpm = require('rollup-plugin-npm');
 
 var tmpFile = 'src/global.js';
 var package = require(path.join(process.cwd(), 'package.json'));
@@ -29,40 +31,41 @@ var noConflictAndGlobal = `
 `;
 
 module.exports = gulp.series(
-  function cleanBefore (done) {
-    return del(['dist', 'lib', tmpFile], done);
+  function cleanBefore () {
+    return del(['dist', 'lib', tmpFile]);
   },
   function tmp (done) {
     fs.writeFile(tmpFile, new Buffer(noConflictAndGlobal, 'utf-8').toString(), done);
   },
   gulp.parallel(
-    function dist () {
-      var opts = gat.opts({
-        max: false
+    function dist (done) {
+      var opts = gat.opts();
+      rollup.rollup({
+        entry: tmpFile,
+        plugins: [
+          rollupCommonjs({ include: 'node_modules/**' }),
+          rollupNpm({ jsnext: true, main: true })
+        ]
+      }).then(function (bundle) {
+        bundle.write({
+          dest: 'dist/index.js',
+          format: 'umd',
+          globals: opts.globals,
+          moduleName: package.name,
+          useStrict: false
+        }).then(function () {
+          done();
+        });
       });
-      var filterOnlySrc = gulpFilter(function (file) {
-        return file.path.indexOf('/src/') > -1;
-      }, { restore: true });
-      return galv.trace(tmpFile).createStream()
-        .pipe(filterOnlySrc)
-        .pipe(galv.cache('babel', gulpBabel()))
-        .pipe(filterOnlySrc.restore)
-        .pipe(galv.cache('globalize', galv.globalize()))
-        .pipe(gulpConcat('index.js'))
-        .pipe(gulp.dest('dist'))
-        .pipe(gulpIf(!opts.max, gulpUglify()))
-        .pipe(gulpConcat('index.min.js'))
-        .pipe(gulp.dest('dist'))
-        .pipe(gulpDebug({ title: 'dist' }));
     },
     function lib () {
       return gulp.src(['src/**/*.js'])
-        .pipe(galv.cache('babel-umd', gulpBabel({ modules: 'umd' })))
+        .pipe(gulpBabel({ modules: 'umd' }))
         .pipe(gulpDebug({ title: 'lib' }))
         .pipe(gulp.dest('lib'));
     }
   ),
-  function cleanAfter (done) {
-    del([tmpFile], done);
+  function cleanAfter () {
+    return del([tmpFile]);
   }
 );
