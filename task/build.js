@@ -1,3 +1,4 @@
+var camelcase = require('camelcase');
 var del = require('del');
 var fs = require('fs');
 var gat = require('gulp-auto-task');
@@ -18,18 +19,27 @@ var tmpFile = 'src/global.js';
 var package = require(path.join(process.cwd(), 'package.json'));
 var packageMain = package['jsnext:main'] || package.main;
 var packageName = package.name;
+var packageNameVar = camelcase(packageName);
 var noConflictAndGlobal = `
   import main from '../${packageMain}';
 
-  const previousGlobal = window.${packageName};
+  const previousGlobal = window.${packageNameVar};
   main.noConflict = function noConflict () {
-    window.${packageName} = previousGlobal;
+    window.${packageNameVar} = previousGlobal;
     return this;
   };
-  window.${packageName} = main;
+  window.${packageNameVar} = main;
 
   export default main;
 `;
+
+function log (e) {
+  console.log(e);
+}
+
+function noop (done) {
+  done();
+}
 
 module.exports = gulp.series(
   function cleanBefore () {
@@ -50,25 +60,20 @@ module.exports = gulp.series(
             rollupCommonjs(),
             rollupNpm()
           ]
-        }).then(function (bundle) {
+        }).catch(log).then(function (bundle) {
           bundle.write({
             dest: 'dist/index.js',
             format: 'umd',
             globals: opts.globals,
-            moduleName: package.name,
+            moduleName: packageName,
             sourceMap: true,
             useStrict: false
-          }).then(function () {
+          }).catch(log).then(function () {
             done();
-          }).catch(function (e) {
-            console.log(e);
           });
         });
       },
-      function uglify () {
-        if (opts.max) {
-          return;
-        }
+      opts.max ? noop : function uglify () {
         return gulp.src('dist/index.js')
           .pipe(gulpRename({ basename: 'index.min' }))
           .pipe(gulpSourcemaps.init())
