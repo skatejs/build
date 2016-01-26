@@ -1,14 +1,15 @@
+var babel = require('../../lib/babel');
 var camelcase = require('camelcase');
 var del = require('del');
 var fs = require('fs');
 var gat = require('gulp-auto-task');
 var gulp = require('gulp');
-var gulpBabel = require('gulp-babel');
 var gulpRename = require('gulp-rename');
 var gulpSourcemaps = require('gulp-sourcemaps');
 var gulpUglify = require('gulp-uglify');
 var path = require('path');
 var report = require('../lib/report');
+var resolve = require('../lib/resolve');
 var rollup = require('rollup');
 var rollupBabel = require('rollup-plugin-babel');
 var rollupCommonjs = require('rollup-plugin-commonjs');
@@ -55,7 +56,7 @@ module.exports = gulp.series(
           entry: tmpFile,
           plugins: [
             rollupBabel({
-              presets: ['../node_modules/skatejs-build/node_modules/babel-preset-es2015-rollup']
+              presets: [resolve('babel-preset-es2015-rollup')]
             }),
             rollupCommonjs(),
             rollupNpm()
@@ -87,10 +88,7 @@ module.exports = gulp.series(
     ),
     function lib () {
       return gulp.src(['src/**/*.js'])
-        .pipe(report(gulpBabel({
-          plugins: ['../node_modules/skatejs-build/node_modules/babel-plugin-transform-es2015-modules-umd'],
-          presets: ['../node_modules/skatejs-build/node_modules/babel-preset-es2015']
-        })))
+        .pipe(babel())
         .pipe(gulp.dest('lib'));
     }
   )

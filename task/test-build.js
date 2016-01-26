@@ -1,6 +1,6 @@
+var babel = require('../lib/babel');
 var galv = require('galvatron');
 var gulp = require('gulp');
-var gulpBabel = require('gulp-babel');
 var gulpConcat = require('gulp-concat');
 var gulpFilter = require('gulp-filter');
 
@@ -10,7 +10,7 @@ module.exports = function () {
   }, { restore: true });
   return galv.trace('test/unit.js').createStream()
     .pipe(filterEverythingExceptWebcomponents)
-    .pipe(galv.cache('babel', gulpBabel()))
+    .pipe(galv.cache('babel', babel()))
     .pipe(filterEverythingExceptWebcomponents.restore)
     .pipe(galv.cache('globalize', galv.globalize()))
     .pipe(gulpConcat('unit.js'))
