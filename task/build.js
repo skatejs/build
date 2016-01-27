@@ -14,11 +14,12 @@ var rollup = require('rollup');
 var rollupCommonjs = require('rollup-plugin-commonjs');
 var rollupNpm = require('rollup-plugin-npm');
 
+var opts = gat.opts();
 var tmpFile = 'src/global.js';
 var package = require(path.join(process.cwd(), 'package.json'));
 var packageMain = package['jsnext:main'] || package.main;
 var packageName = package.name;
-var packageNameVar = camelcase(packageName);
+var packageNameVar = opts.global || camelcase(packageName);
 var noConflictAndGlobal = `
   import main from '../${packageMain}';
 
@@ -31,8 +32,6 @@ var noConflictAndGlobal = `
 
   export default main;
 `;
-
-var opts = gat.opts();
 
 function log (e) {
   console.log(e);
