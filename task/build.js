@@ -62,6 +62,7 @@ module.exports = gulp.series(
         }).catch(log).then(function (bundle) {
           bundle.write({
             dest: 'dist/index.js',
+            exports: 'default',
             format: 'umd',
             globals: opts.globals,
             moduleName: packageName,
