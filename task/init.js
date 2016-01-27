@@ -7,6 +7,7 @@ var initDir = path.join(__dirname, '..', 'init');
 var files = [
   'src/index.js',
   'src/version.js',
+  'test/unit.js',
   '.editorconfig',
   '.eslintignore',
   '.eslintrc',
