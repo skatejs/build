@@ -18,14 +18,25 @@ var files = [
   'gulpfile.js'
 ];
 
-module.exports = function () {
+module.exports = function (done) {
+  var finished = 1;
+
+  function doneify () {
+    finished++
+    if (finished === files.length) {
+      done();
+    }
+  }
+
   files.forEach(function (file, idx) {
     var src = path.join(initDir, file)
     var dst = path.join(process.cwd(), file);
     fs.readFile(src, function (err, content) {
       fs.exists(dst, function (exists) {
-        if (!exists) {
-          fs.writeFile(dst, replace(content, package));
+        if (exists) {
+          doneify();
+        } else {
+          fs.writeFile(dst, lodash.template(content)(package), doneify);
         }
       });
     });
