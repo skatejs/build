@@ -1,5 +1,6 @@
 var fs = require('fs');
 var lodash = require('lodash');
+var mkdirp = require('mkdirp');
 var path = require('path');
 
 var package = require(path.join(process.cwd(), 'package.json'));
@@ -37,7 +38,9 @@ module.exports = function (done) {
         if (exists) {
           doneify();
         } else {
-          fs.writeFile(dst, lodash.template(content)(package), doneify);
+          mkdirp(path.dirname(dst), function () {
+            fs.writeFile(dst, lodash.template(content)(package), doneify);
+          });
         }
       });
     });
