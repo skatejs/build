@@ -23,12 +23,12 @@ module.exports = function (done) {
     opts.type
   );
 
-  sh.exec('npm run lint');
-  sh.exec('npm run test');
+  sh.exec('gulp lint');
+  sh.exec('gulp test');
   replace('src/version.js', currentVersion, nextVersion);
   replace('bower.json', currentVersion, nextVersion);
   replace('package.json', currentVersion, nextVersion);
-  sh.exec('npm run build');
+  sh.exec('gulp build');
   sh.exec('git commit -am "' + currentVersion + ' -> ' + nextVersion + '"');
   sh.exec('git tag -a ' + nextVersion + ' -m ' + nextVersion);
   sh.exec('git push');
