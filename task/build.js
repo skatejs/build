@@ -1,4 +1,4 @@
-var babel = require('../../lib/babel');
+var babel = require('../lib/babel');
 var camelcase = require('camelcase');
 var del = require('del');
 var fs = require('fs');
