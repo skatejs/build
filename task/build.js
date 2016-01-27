@@ -1,4 +1,5 @@
 var babel = require('../lib/babel');
+var babelRollup = require('../lib/babel-rollup');
 var camelcase = require('camelcase');
 var del = require('del');
 var fs = require('fs');
@@ -9,13 +10,10 @@ var gulpSourcemaps = require('gulp-sourcemaps');
 var gulpUglify = require('gulp-uglify');
 var path = require('path');
 var report = require('../lib/report');
-var resolve = require('../lib/resolve');
 var rollup = require('rollup');
-var rollupBabel = require('rollup-plugin-babel');
 var rollupCommonjs = require('rollup-plugin-commonjs');
 var rollupNpm = require('rollup-plugin-npm');
 
-var opts = gat.opts();
 var tmpFile = 'src/global.js';
 var package = require(path.join(process.cwd(), 'package.json'));
 var packageMain = package['jsnext:main'] || package.main;
@@ -33,6 +31,8 @@ var noConflictAndGlobal = `
 
   export default main;
 `;
+
+var opts = gat.opts();
 
 function log (e) {
   console.log(e);
@@ -55,9 +55,7 @@ module.exports = gulp.series(
         rollup.rollup({
           entry: tmpFile,
           plugins: [
-            rollupBabel({
-              presets: [resolve('babel-preset-es2015-rollup')]
-            }),
+            babelRollup(opts.babel),
             rollupCommonjs(),
             rollupNpm()
           ]
@@ -88,7 +86,7 @@ module.exports = gulp.series(
     ),
     function lib () {
       return gulp.src(['src/**/*.js'])
-        .pipe(babel())
+        .pipe(babel(opts.babel))
         .pipe(gulp.dest('lib'));
     }
   )
