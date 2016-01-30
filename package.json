@@ -18,7 +18,7 @@
     "galvatron": "treshugart/galvatron#2e399eb",
     "gulp": "gulpjs/gulp#3311fca",
     "gulp-auto-task": "treshugart/gulp-auto-task#80993d3",
-    "gulp-babel": "^6.1.1",
+    "gulp-babel": "^6.1.2",
     "gulp-concat": "2.6.0",
     "gulp-debug": "2.1.2",
     "gulp-eslint": "1.0.0",
