@@ -14,13 +14,13 @@ var report = require('../lib/report');
 var rollup = require('../lib/rollup');
 
 var opts = gat.opts();
-var tmpFile = 'lib/global.js';
-var package = require(path.join(process.cwd(), 'package.json'));
-var packageMain = package['jsnext:main'] || package.main;
-var packageName = package.name;
+var tmpFile = 'src/global.js';
+var packageJson = require(path.join(process.cwd(), 'package.json'));
+var packageMain = packageJson['jsnext:main'] || packageJson.main;
+var packageName = packageJson.name;
 var packageNameVar = opts.global || camelcase(packageName);
 var noConflictAndGlobal = `
-  import main from '../${package.main}';
+  import main from '../${packageMain}';
 
   const previousGlobal = window.${packageNameVar};
   main.noConflict = function noConflict () {
@@ -41,11 +41,8 @@ module.exports = gulp.series(
       .pipe(galv.cache('lib', babel(opts.babel)))
       .pipe(gulp.dest('lib'));
   },
-  function createTmp () {
-    fs.writeFileSync(tmpFile, new Buffer(noConflictAndGlobal, 'utf-8').toString());
-    return gulp.src(tmpFile)
-      .pipe(galv.cache('lib-global', babel(opts.babel)))
-      .pipe(gulp.dest('lib'));
+  function createTmp (done) {
+    fs.writeFile(tmpFile, new Buffer(noConflictAndGlobal, 'utf-8').toString(), done);
   },
   function dist (done) {
     rollup(tmpFile, {
