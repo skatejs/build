@@ -48,6 +48,7 @@ module.exports = gulp.series(
     rollup(tmpFile, {
       dest: 'dist/index.js',
       globals: opts.globals,
+      jsx: opts.jsx,
       moduleName: packageName
     }, done);
   },
