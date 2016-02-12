@@ -5,17 +5,23 @@ var gulp = require('gulp');
 var gulpConcat = require('gulp-concat');
 var gulpFilter = require('gulp-filter');
 
-var opts = gat.opts();
+var opts = gat.opts({
+  unit: {
+    files: []
+  }
+});
+var coreFiles = ['test/unit.js'];
+var extraFiles = opts.unit.files;
 
 module.exports = function () {
-  var filterEverythingExceptWebcomponents = gulpFilter(function (file) {
-    return file.path.indexOf('webcomponents.js') === -1;
-  }, { restore: true });
-  return galv.trace('test/unit.js').createStream()
-    .pipe(filterEverythingExceptWebcomponents)
+  var filterOutExtraFiles = gulpFilter(['**'].concat(extraFiles.map(function (file) {
+    return '!' + file;
+  })), { restore: true });
+  return galv.trace(extraFiles.concat(coreFiles)).createStream()
+    .pipe(filterOutExtraFiles)
     .pipe(galv.cache('babel', babel(opts.babel)))
-    .pipe(filterEverythingExceptWebcomponents.restore)
     .pipe(galv.cache('globalize', galv.globalize()))
+    .pipe(filterOutExtraFiles.restore)
     .pipe(gulpConcat('unit.js'))
     .pipe(gulp.dest('.tmp'));
 };

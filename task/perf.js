@@ -8,21 +8,26 @@ var gulpDebug = require('gulp-debug');
 var gulpFilter = require('gulp-filter');
 var Server = require('karma').Server;
 
-var opts = gat.opts();
-var benchFilter = gulpFilter(['**', '!**/benchmark.js'], { restore: true });
-var filterEverythingExceptWebcomponents = gulpFilter(['**/*','!**/webcomponents.js/**/*'], { restore: true });
+var opts = gat.opts({
+  perf: {
+    files: []
+  }
+});
 
+var coreFiles = ['test/perf.js'];
+var extraFiles = ['node_modules/skatejs-build/node_modules/benchmark/benchmark.js'].concat(opts.perf.files);
 
 module.exports = gulp.series(
   function () {
-    return galv.trace(['node_modules/skatejs-build/node_modules/benchmark/benchmark.js', 'test/perf.js']).createStream()
+    var filterOutExtraFiles = gulpFilter(['**'].concat(extraFiles.map(function (file) {
+      return '!' + file;
+    })), { restore: true });
+    return galv.trace(extraFiles.concat(coreFiles)).createStream()
+      .pipe(filterOutExtraFiles)
       .pipe(gulpDebug())
-      .pipe(benchFilter)
-      .pipe(filterEverythingExceptWebcomponents)
       .pipe(galv.cache('babel', babel(opts.babel)))
-      .pipe(filterEverythingExceptWebcomponents.restore)
       .pipe(galv.cache('globalize', galv.globalize()))
-      .pipe(benchFilter.restore)
+      .pipe(filterOutExtraFiles.restore)
       .pipe(gulpConcat('perf.js'))
       .pipe(gulp.dest('.tmp'));
   },
