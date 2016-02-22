@@ -1,15 +1,24 @@
 var TIMEOUT = 1000000;
 
+function hasArguments (fn) {
+  var fnStr = fn.toString();
+  return (fnStr.indexOf('(') + 1) < fnStr.indexOf(')');
+}
+
 module.exports = function (name, options) {
   describe('', function () {
-    var bench;
     var title = this.fullTitle();
 
-    beforeEach(function () {
-      options = typeof options === 'function' ? { fn: options } : options;
-      options.name = title + name;
-      bench = new Benchmark(options);
-    });
+    if (typeof options === 'function') {
+      options = { fn: options };
+    }
+
+    var isAsync = hasArguments(options.fn);
+
+    options.defer = isAsync;
+    options.name = title + name;
+
+    var bench = new Benchmark(options);
 
     it(name, function (done) {
       this.title = options.name;
@@ -20,7 +29,7 @@ module.exports = function (name, options) {
         done();
       });
 
-      bench.run();
+      bench.run({ async: isAsync });
     });
   });
 };
