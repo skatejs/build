@@ -9,13 +9,11 @@ var gulpFilter = require('gulp-filter');
 var Server = require('karma').Server;
 
 var opts = gat.opts({
-  perf: {
-    files: []
-  }
+  perf: {}
 });
 
 var coreFiles = ['test/perf.js'];
-var extraFiles = ['node_modules/skatejs-build/node_modules/benchmark/benchmark.js'].concat(opts.perf.files);
+var extraFiles = ['node_modules/skatejs-build/node_modules/benchmark/benchmark.js'].concat(opts.perf.files || []);
 
 module.exports = gulp.series(
   function () {
@@ -47,9 +45,9 @@ module.exports = gulp.series(
       browserNoActivityTimeout: 1000000,
       browsers: opts.browsers.split(','),
       client: { args: args },
-      files: [
+      files: (opts.perf.scripts || []).concat([
         '.tmp/perf.js'
-      ],
+      ]),
       frameworks: ['mocha', 'sinon-chai']
     }, function finishTaskAndExit (exitCode) {
       done();

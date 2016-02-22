@@ -6,12 +6,10 @@ var gulpConcat = require('gulp-concat');
 var gulpFilter = require('gulp-filter');
 
 var opts = gat.opts({
-  unit: {
-    files: []
-  }
+  unit: {}
 });
 var coreFiles = ['test/unit.js'];
-var extraFiles = opts.unit.files;
+var extraFiles = opts.unit.files || [];
 
 module.exports = function () {
   var filterOutExtraFiles = gulpFilter(['**'].concat(extraFiles.map(function (file) {

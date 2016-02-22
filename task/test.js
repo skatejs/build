@@ -23,9 +23,9 @@ function test (opts) {
       client: { args: args },
       frameworks: ['mocha', 'sinon-chai'],
       singleRun: opts.singleRun,
-      files: [
+      files: (opts.perf.scripts || []).concat([
         '.tmp/unit.js'
-      ]
+      ]),
     };
 
     if (opts.saucelabs) {
