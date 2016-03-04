@@ -21,14 +21,12 @@ var packageName = packageJson.name;
 var packageNameVar = opts.global || camelcase(packageName);
 var noConflictAndGlobal = `
   import main from '../${packageMain}';
-
   const previousGlobal = window.${packageNameVar};
   main.noConflict = function noConflict () {
     window.${packageNameVar} = previousGlobal;
     return this;
   };
   window.${packageNameVar} = main;
-
   export default main;
 `;
 
@@ -49,7 +47,7 @@ module.exports = gulp.series(
       dest: 'dist/index.js',
       globals: opts.globals,
       jsx: opts.jsx,
-      moduleName: packageName
+      moduleName: packageNameVar
     }, done);
   },
   function removeTmp () {
