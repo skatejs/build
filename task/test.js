@@ -7,9 +7,11 @@ function test (opts) {
   return function (done) {
     var args = [];
     opts = assign({
+      browsers: ['Firefox', 'Chrome'].join(','),
+      perf: {},
+      unit: {},
       singleRun: true,
-      watch: false,
-      browsers: ['Firefox', 'Chrome'].join(',')
+      watch: false
     }, opts);
 
     if (opts.grep) {
