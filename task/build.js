@@ -20,13 +20,16 @@ var packageMain = packageJson['jsnext:main'] || packageJson.main;
 var packageName = packageJson.name;
 var packageNameVar = opts.global || camelcase(packageName);
 var noConflictAndGlobal = `
-  import main from '../${packageMain}';
+  import main, * as api from '../${packageMain}';
   const previousGlobal = window.${packageNameVar};
   main.noConflict = function noConflict () {
     window.${packageNameVar} = previousGlobal;
     return this;
   };
   window.${packageNameVar} = main;
+  for (let name in api) {
+    main[name] = api[name];
+  }
   export default main;
 `;
 
@@ -46,7 +49,6 @@ module.exports = gulp.series(
     rollup(tmpFile, {
       dest: 'dist/index.js',
       exports: opts.exports,
-      format: opts.format,
       globals: opts.globals,
       jsx: opts.jsx,
       moduleName: packageNameVar
