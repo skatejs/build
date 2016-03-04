@@ -9,6 +9,7 @@ var gulpFilter = require('gulp-filter');
 var Server = require('karma').Server;
 
 var opts = gat.opts({
+  browsers: 'Firefox',
   perf: {}
 });
 
@@ -31,9 +32,6 @@ module.exports = gulp.series(
   },
   function (done) {
     var args = [];
-    var opts = assign({
-      browsers: 'Firefox'
-    }, gat.opts());
 
     if (opts.grep) {
       args.push('--grep');

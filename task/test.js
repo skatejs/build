@@ -8,7 +8,6 @@ function test (opts) {
     var args = [];
     opts = assign({
       browsers: ['Firefox', 'Chrome'].join(','),
-      perf: {},
       unit: {},
       singleRun: true,
       watch: false
