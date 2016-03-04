@@ -25,7 +25,7 @@ module.exports = function (done) {
 
   sh.exec('gulp lint');
   sh.exec('gulp test');
-  replace('src/version.js', currentVersion, nextVersion);
+  replace('src/api/version.js', currentVersion, nextVersion);
   replace('bower.json', currentVersion, nextVersion);
   replace('package.json', currentVersion, nextVersion);
   sh.exec('gulp build');

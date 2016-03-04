@@ -5,7 +5,7 @@ var gulpConcat = require('gulp-concat');
 var gulpDebug = require('gulp-debug');
 var gulpFilter = require('gulp-filter');
 var gulpLess = require('gulp-less');
-var gulpMinifyCss = require('gulp-minify-css');
+var gulpCssnano = require('gulp-cssnano');
 var gulpUglify = require('gulp-uglify');
 
 module.exports = function () {
@@ -31,7 +31,7 @@ module.exports = function () {
     // Styles.
     .pipe(filterLess)
     .pipe(galv.cache('less', gulpLess()))
-    .pipe(galv.cache('minify-css', gulpMinifyCss()))
+    .pipe(galv.cache('cssnano', gulpCssnano()))
     .pipe(gulpConcat('index.css'))
     .pipe(gulp.dest('dist'))
     .pipe(gulpDebug({ title: 'less' }))
