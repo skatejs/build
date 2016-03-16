@@ -24,7 +24,7 @@ function test (opts) {
       client: { args: args },
       frameworks: ['mocha', 'sinon-chai'],
       singleRun: opts.singleRun,
-      files: (opts.perf.scripts || []).concat([
+      files: (opts.unit.scripts || []).concat([
         '.tmp/unit.js'
       ]),
     };
