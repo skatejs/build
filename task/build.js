@@ -31,7 +31,7 @@ var noConflictAndGlobal = `
   for (let name in api) {
     main[name] = api[name];
   }
-  main.version = ${packageVersion}
+  main.version = '${packageVersion}';
   export default main;
 `;
 
