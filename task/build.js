@@ -19,6 +19,7 @@ var packageJson = require(path.join(process.cwd(), 'package.json'));
 var packageMain = packageJson['jsnext:main'] || packageJson.main;
 var packageName = packageJson.name;
 var packageNameVar = opts.global || camelcase(packageName);
+var packageVersion = packageJson.version;
 var noConflictAndGlobal = `
   import main, * as api from '../${packageMain}';
   const previousGlobal = window.${packageNameVar};
@@ -30,6 +31,7 @@ var noConflictAndGlobal = `
   for (let name in api) {
     main[name] = api[name];
   }
+  main.version = ${packageVersion}
   export default main;
 `;
 
