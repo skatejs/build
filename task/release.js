@@ -28,6 +28,7 @@ module.exports = function (done) {
   replace('bower.json', currentVersion, nextVersion);
   replace('package.json', currentVersion, nextVersion);
   sh.exec('gulp build');
+  sh.exec('git add dist/ lib/');
   sh.exec('git commit -am "' + currentVersion + ' -> ' + nextVersion + '"');
   sh.exec('git tag -a ' + nextVersion + ' -m ' + nextVersion);
   sh.exec('git push');
