@@ -54,7 +54,7 @@ module.exports = gulp.series(
       globals: opts.globals,
       jsx: opts.jsx,
       moduleName: packageNameVar
-    }, done);
+    }).catch(console.log).then(done);
   },
   function removeTmp () {
     return del([tmpFile]);
