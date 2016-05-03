@@ -13,6 +13,10 @@ var opts = gat.opts({
   perf: {}
 });
 
+var babelOpts = assign({
+  umd: true
+}, opts.babel);
+
 var coreFiles = ['test/perf.js'];
 var extraFiles = ['node_modules/skatejs-build/node_modules/benchmark/benchmark.js'].concat(opts.perf.files || []);
 
@@ -24,7 +28,7 @@ module.exports = gulp.series(
     return galv.trace(extraFiles.concat(coreFiles)).createStream()
       .pipe(filterOutExtraFiles)
       .pipe(gulpDebug())
-      .pipe(galv.cache('babel', babel(opts.babel)))
+      .pipe(galv.cache('babel', babel(babelOpts)))
       .pipe(galv.cache('globalize', galv.globalize()))
       .pipe(filterOutExtraFiles.restore)
       .pipe(gulpConcat('perf.js'))

@@ -1,3 +1,4 @@
+var assign = require('object-assign');
 var babel = require('../lib/babel');
 var camelcase = require('camelcase');
 var del = require('del');
@@ -14,6 +15,10 @@ var report = require('../lib/report');
 var rollup = require('../lib/rollup');
 
 var opts = gat.opts();
+var babelOpts = assign({
+  umd: true
+}, opts.babel);
+
 var tmpFile = 'src/global.js';
 var packageJson = require(path.join(process.cwd(), 'package.json'));
 var packageMain = packageJson['jsnext:main'] || packageJson.main;
@@ -41,7 +46,7 @@ module.exports = gulp.series(
   },
   function lib () {
     return gulp.src(['src/**/*.js'])
-      .pipe(galv.cache('lib', babel(opts.babel)))
+      .pipe(galv.cache('lib', babel(babelOpts)))
       .pipe(gulp.dest('lib'));
   },
   function createTmp (done) {
