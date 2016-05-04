@@ -1,4 +1,5 @@
 var assign = require('lodash/object/assign');
+var consume = require('stream-consume');
 var gat = require('gulp-auto-task');
 var Server = require('karma').Server;
 var testBuild = require('./test-build');
@@ -26,7 +27,7 @@ function test (opts) {
       singleRun: opts.singleRun,
       files: (opts.unit.scripts || []).concat([
         '.tmp/unit.js'
-      ]),
+      ])
     };
 
     if (opts.saucelabs) {
@@ -37,7 +38,6 @@ function test (opts) {
           recordScreenshots: false,
           connectOptions: {
             verbose: true,
-            verboseDebugging: true
           }
         },
         customLaunchers: saucelabsLaunchers,
@@ -50,7 +50,7 @@ function test (opts) {
       });
     }
 
-    return testBuild(opts)
+    var testBuildStream = testBuild(opts)
       .on('error', function (e) {
         throw e;
       })
@@ -60,6 +60,7 @@ function test (opts) {
           process.exit(exitCode);
         }).start();
       });
+    consume(testBuildStream);
   };
 }
 
