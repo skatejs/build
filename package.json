@@ -24,7 +24,7 @@
     "gulp-debug": "2.1.2",
     "gulp-eslint": "1.0.0",
     "gulp-filter": "3.0.1",
-    "gulp-if": "^2.0.0",
+    "gulp-if": "^2.0.1",
     "gulp-less": "3.0.3",
     "gulp-rename": "^1.2.2",
     "gulp-sourcemaps": "^1.6.0",
