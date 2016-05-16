@@ -20,7 +20,7 @@
     "gulp-auto-task": "treshugart/gulp-auto-task#80993d3",
     "gulp-babel": "^6.1.1",
     "gulp-concat": "2.6.0",
-    "gulp-cssnano": "2.1.1",
+    "gulp-cssnano": "2.1.2",
     "gulp-debug": "2.1.2",
     "gulp-eslint": "1.0.0",
     "gulp-filter": "3.0.1",
