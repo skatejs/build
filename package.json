@@ -14,7 +14,7 @@
     "camelcase": "^2.1.0",
     "del": "2.0.2",
     "eslint": "1.7.3",
-    "eslint-plugin-react": "^3.16.1",
+    "eslint-plugin-react": "^4.2.2",
     "galvatron": "treshugart/galvatron#2e399eb",
     "gulp": "gulpjs/gulp#3311fca",
     "gulp-auto-task": "treshugart/gulp-auto-task#80993d3",
