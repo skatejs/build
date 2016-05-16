@@ -13,7 +13,7 @@
     "benchmark": "1.0.0",
     "camelcase": "^2.1.0",
     "del": "2.0.2",
-    "eslint": "1.7.3",
+    "eslint": "2.4.0",
     "eslint-plugin-react": "^3.16.1",
     "galvatron": "treshugart/galvatron#2e399eb",
     "gulp": "gulpjs/gulp#3311fca",
