@@ -12,7 +12,7 @@
     "babel-preset-es2015-rollup": "^1.1.1",
     "benchmark": "1.0.0",
     "camelcase": "^2.1.0",
-    "del": "2.0.2",
+    "del": "2.1.0",
     "eslint": "2.10.2",
     "eslint-plugin-react": "^3.16.1",
     "galvatron": "treshugart/galvatron#2e399eb",
