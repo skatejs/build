@@ -1,2 +1,2 @@
 #!/bin/sh
-./node_modules/skatejs-build/node_modules/.bin/karma start "$@"
+karma start "$@"
