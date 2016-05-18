@@ -8,7 +8,7 @@ before_script:
 - npm install
 script:
 - npm run lint
-- if [ "<%= '${TRAVIS_SECURE_ENV_VARS}' %>" = "true" ]; then npm test -- --saucelabs; else npm test -- --browsers Firefox; fi
+- if [ "<%= '${TRAVIS_SECURE_ENV_VARS}' %>" = "true" ]; then npm test -- --sauce; else npm test -- --browsers Firefox; fi
 env:
   global:
     - SAUCE_TESTNAME="<%= name %>"
