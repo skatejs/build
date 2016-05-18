@@ -139,7 +139,7 @@ Object.keys(sauceBrowsers).forEach(function (key) {
 });
 
 module.exports = function (config) {
-  config.set({
+  config.set(Object.assign({
     // base path that will be used to resolve all patterns (eg. files, exclude)
     // setting to process.cwd will make all paths start in current component directory
     basePath: process.cwd(),
@@ -212,5 +212,5 @@ module.exports = function (config) {
     autoWatch: false,
     concurrency: 5,
     client: {}
-  });
+  }));
 };
