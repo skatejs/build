@@ -3,11 +3,6 @@ var path = require('path');
 var webpack = require('webpack');
 var pkg = require(path.join(process.cwd(), 'package.json'));
 var shouldMininimize = process.argv.indexOf('--min') !== -1;
-
-function plugin (name) {
-  return path.join(__dirname, 'node_modules', name);
-}
-
 var standardConfig = {
   entry: {
     'dist/bundle.js': './src/index.js'
@@ -27,10 +22,10 @@ var standardConfig = {
       test: /\.less$/,
       loader: 'style!css!less'
     }, {
-      loader: plugin('babel-loader'),
+      loader: 'babel-loader',
       test: /\.js$/,
       query: {
-        presets: plugin('babel-preset-es2015')
+        presets: 'babel-preset-es2015'
       }
     }]
   },
