@@ -199,7 +199,7 @@ module.exports = function (config) {
     // Concurrency level
     // how many browser should be started simultaneous
     concurrency: Infinity
-  }, process.argv.indexOf('--sauce') === -1 ? {} : {
+  }, process.argv.indexOf('--saucelabs') === -1 ? {} : {
     sauceLabs: {
       testName: 'Unit Tests',
       recordScreenshots: false,
