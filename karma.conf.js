@@ -2,7 +2,13 @@ const webpackConfig = require('./webpack.config');
 const sauceBrowsers = require('./sauce.browsers');
 
 module.exports = function (config) {
+  // list of files / patterns to load in the browser
+  // all dependancies should be traced through here
   var files = ['test/unit.js'];
+
+  // preprocess matching files before serving them to the browser
+  // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
+  // webpack will trace and watch all dependancies
   var preprocessors = {
     'test/unit.js': [ 'webpack', 'sourcemap' ]
   };
@@ -24,15 +30,12 @@ module.exports = function (config) {
     frameworks: [ 'mocha', 'chai', 'sinon-chai' ],
 
     // list of files / patterns to load in the browser
-    // all dependancies should be traced through here
     files: files,
 
     // list of files to exclude
     exclude: [],
 
-    // preprocess matching files before serving them to the browser
-    // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-    // webpack will trace and watch all dependancies
+    // list of preprocessors
     preprocessors: preprocessors,
 
     // karma watches the test entry points
