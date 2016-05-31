@@ -8,7 +8,7 @@ module.exports = function (config) {
   };
 
   if (process.argv.indexOf('--perf') > -1) {
-    files = [ 'node_modules/benchmark/benchmark.js', 'test/perf.js' ];
+    files = [ require.resolve('../benchmark/benchmark.js'), 'test/perf.js' ];
     preprocessors = {
       'test/perf.js': [ 'webpack', 'sourcemap' ]
     };
