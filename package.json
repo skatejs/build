@@ -15,7 +15,7 @@
     "cz-conventional-changelog": "^1.1.6",
     "eslint": "^2.11.1",
     "eslint-config-airbnb": "^9.0.1",
-    "eslint-plugin-import": "^1.8.0",
+    "eslint-plugin-import": "^1.8.1",
     "eslint-plugin-jsx-a11y": "^1.2.2",
     "eslint-plugin-mocha": "^2.2.0",
     "eslint-plugin-react": "^5.1.1",
@@ -42,8 +42,7 @@
     "rollup-plugin-uglify": "^0.3.1",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.1",
-    "webpack-dev-server": "^1.14.1",
-    "@atlassian/eslint-config-atlassian-fecq": "*"
+    "webpack-dev-server": "^1.14.1"
   },
   "bin": {
     "bundle": "bin/bundle",
