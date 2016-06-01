@@ -10,7 +10,7 @@
     "node": true,
     "browser": true
   },
-  "extends": "eslint:recommended",
+  "extends": "@atlassian/atlassian-fecq",
   "globals": {
     "afterEach": true,
     "assert": true,
