@@ -70,9 +70,6 @@
     "url": "https://github.com/skatejs/build/issues"
   },
   "homepage": "https://github.com/skatejs/build#readme",
-  "devDependencies": {
-    "cz-conventional-changelog": "^1.1.6"
-  },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
