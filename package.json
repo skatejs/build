@@ -1,6 +1,5 @@
 {
   "name": "skatejs-build",
-  "version": "1.0.0",
   "description": "Common build tasks for SkateJS projects.",
   "main": "index.js",
   "dependencies": {
@@ -54,11 +53,12 @@
     "tests-watch": "bin/tests-watch"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"no test specified\"",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/skatejs/build.git"
+    "url": "https://github.com/skatejs/build.git"
   },
   "keywords": [
     "skatejs",
@@ -69,5 +69,13 @@
   "bugs": {
     "url": "https://github.com/skatejs/build/issues"
   },
-  "homepage": "https://github.com/skatejs/build#readme"
+  "homepage": "https://github.com/skatejs/build#readme",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "devDependencies": {
+    "semantic-release": "^4.3.5"
+  }
 }
