@@ -74,8 +74,5 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  },
-  "devDependencies": {
-    "semantic-release": "4.3.5"
   }
 }
