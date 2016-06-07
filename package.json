@@ -46,12 +46,12 @@
     "webpack-dev-server": "1.14.1"
   },
   "bin": {
-    "bundle": "bin/sk-bundle",
-    "init": "bin/sk-init",
-    "release": "bin/sk-release",
-    "server": "bin/sk-server",
-    "tests": "bin/sk-tests",
-    "tests-watch": "bin/sk-tests-watch"
+    "sk-bundle": "bin/sk-bundle",
+    "sk-init": "bin/sk-init",
+    "sk-release": "bin/sk-release",
+    "sk-server": "bin/sk-server",
+    "sk-tests": "bin/sk-tests",
+    "sk-tests-watch": "bin/sk-tests-watch"
   },
   "scripts": {
     "test": "echo \"no test specified\""
