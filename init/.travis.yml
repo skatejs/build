@@ -12,14 +12,14 @@ before_script:
   - sh -e /etc/init.d/xvfb start
   - npm install
 script:
-  - bundle
+  - sk-bundle
   - if [ "${TRAVIS_SECURE_ENV_VARS}" = "true" ]; then
     npm test -- --saucelabs;
     else
     npm test -- --browsers Firefox;
     fi
 after_success:
-  - ./bin/release
+  - sk-release
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
