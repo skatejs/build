@@ -11,6 +11,7 @@
     "babel-preset-es2015-rollup": "1.1.1",
     "benchmark": "2.1.0",
     "camelcase": "3.0.0",
+    "commitizen": "^2.8.2",
     "css-loader": "0.23.1",
     "cz-conventional-changelog": "1.1.6",
     "eslint": "2.11.1",
@@ -39,21 +40,21 @@
     "rollup-plugin-commonjs": "2.2.1",
     "rollup-plugin-node-resolve": "1.5.0",
     "rollup-plugin-uglify": "0.3.1",
+    "semantic-release": "^4.3.5",
     "style-loader": "0.13.1",
     "webpack": "1.13.1",
     "webpack-dev-server": "1.14.1"
   },
   "bin": {
-    "bundle": "bin/bundle",
-    "init": "bin/init",
-    "release": "bin/release",
-    "server": "bin/server",
-    "tests": "bin/tests",
-    "tests-watch": "bin/tests-watch"
+    "bundle": "bin/sk-bundle",
+    "init": "bin/sk-init",
+    "release": "bin/sk-release",
+    "server": "bin/sk-server",
+    "tests": "bin/sk-tests",
+    "tests-watch": "bin/sk-tests-watch"
   },
   "scripts": {
-    "test": "echo \"no test specified\"",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "test": "echo \"no test specified\""
   },
   "repository": {
     "type": "git",

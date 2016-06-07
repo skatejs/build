@@ -9,7 +9,7 @@ node_js: stable
 before_script:
   - npm prune
 after_success:
-  - npm run semantic-release
+  - ./bin/release
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/

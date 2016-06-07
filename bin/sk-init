@@ -1,0 +1,36 @@
+#!/usr/bin/env node
+
+const fs = require('fs');
+const lodash = require('lodash');
+const mkdirp = require('mkdirp');
+const path = require('path');
+
+const pkg = require(path.join(process.cwd(), 'package.json'));
+const initDir = path.join(__dirname, '..', 'init');
+const files = [
+  '../.editorconfig',
+  '../.eslintignore',
+  '../.eslintrc',
+  '../.gitignore',
+  '.travis.yml',
+  'bower.json',
+  'README.md',
+  'src/index.js',
+  'src/version.js',
+  'test/perf.js',
+  'test/unit.js',
+];
+
+files.forEach(file => {
+  const src = path.join(initDir, file);
+  const dst = path.join(process.cwd(), file);
+  fs.readFile(src, (err, content) => {
+    fs.exists(dst, exists => {
+      if (!exists) {
+        mkdirp(path.dirname(dst), () => {
+          fs.writeFile(dst, lodash.template(content)(pkg));
+        });
+      }
+    });
+  });
+});

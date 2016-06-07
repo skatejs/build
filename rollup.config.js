@@ -5,13 +5,14 @@ const rollupUglify = require('rollup-plugin-uglify');
 const path = require('path');
 const pkg = require(path.join(process.cwd(), 'package.json'));
 const shouldMinify = process.argv.indexOf('--min') !== -1;
+const presetEs2015 = require('babel-preset-es2015-rollup');
 const babel = rollupBabel({
-  presets: require('babel-preset-es2015-rollup')
+  presets: presetEs2015,
 });
 const plugins = [
   babel,
   rollupCommonjs(),
-  rollupNodeResolve()
+  rollupNodeResolve(),
 ];
 
 if (shouldMinify) {
@@ -20,16 +21,6 @@ if (shouldMinify) {
 
 const entry = pkg['jsnext:main'] || pkg.main || 'src/index.js';
 const moduleName = pkg['build:global'] || pkg.name;
-const pkgVersion = pkg.version;
-
-const outro = `
-var previousGlobal = window.${moduleName};
-exports.noConflict = function () {
-  window.${moduleName} = previousGlobal;
-  return this;
-};
-exports.version = '${pkgVersion}';
-`;
 
 module.exports = {
   dest: `dist/index${shouldMinify ? '.min' : ''}.js`,
@@ -37,8 +28,7 @@ module.exports = {
   exports: 'named',
   format: 'umd',
   moduleName,
-  outro,
   plugins,
   sourceMap: true,
-  useStrict: false
+  useStrict: false,
 };
