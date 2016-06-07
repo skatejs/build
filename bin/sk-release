@@ -1,0 +1,2 @@
+#!/bin/sh
+semantic-release pre && npm publish && semantic-release post
