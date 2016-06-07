@@ -47,6 +47,7 @@
   },
   "bin": {
     "sk-bundle": "bin/sk-bundle",
+    "sk-commit": "bin/sk-commit",
     "sk-init": "bin/sk-init",
     "sk-release": "bin/sk-release",
     "sk-server": "bin/sk-server",
