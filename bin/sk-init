@@ -13,7 +13,6 @@ const files = [
   '../.eslintrc',
   '../.gitignore',
   '.travis.yml',
-  'bower.json',
   'README.md',
   'src/index.js',
   'src/version.js',
