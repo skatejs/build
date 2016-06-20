@@ -18,7 +18,7 @@ const files = [
   './karma.conf.js',
   './rollup.config.js',
   './sauce.browsers.js',
-  './webpack.conf.js',
+  './webpack.config.js',
   '.travis.yml',
 
   // Metadata.
