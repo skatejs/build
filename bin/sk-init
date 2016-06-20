@@ -11,7 +11,7 @@ const files = [
   // Base editor / git config.
   '.editorconfig',
   '.eslintrc',
-  '.npmignore',
+  '.gitignore',
 
   // Tooling config.
   './karma.conf.js',
@@ -31,14 +31,14 @@ const files = [
 ];
 
 files.forEach(file => {
-  let dstFile = file;
+  let srcFile = file;
 
-  if (dstFile === '.gitignore') {
-    dstFile = '.npmignore';
+  if (srcFile === '.gitignore') {
+    srcFile = '.npmignore';
   }
 
-  const src = path.join(initDir, file);
-  const dst = path.join(process.cwd(), dstFile);
+  const src = path.join(initDir, srcFile);
+  const dst = path.join(process.cwd(), file);
 
   fs.readFile(src, (err, content) => {
     fs.exists(dst, exists => {
