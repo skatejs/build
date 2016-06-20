@@ -23,7 +23,7 @@ const entry = pkg['jsnext:main'] || pkg.main || 'src/index.js';
 const moduleName = pkg['build:global'] || pkg.name;
 
 module.exports = {
-  dest: `dist/index${shouldMinify ? '.min' : ''}.js`,
+  dest: 'dist/index' + (shouldMinify ? '.min' : '') + '.js',
   entry,
   exports: 'named',
   format: 'umd',
