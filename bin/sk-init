@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+const exec = require('child_process').exec;
 const fs = require('fs');
 const lodash = require('lodash');
 const mkdirp = require('mkdirp');
@@ -33,6 +34,7 @@ const files = [
 files.forEach(file => {
   let srcFile = file;
 
+  // NPM Renames .gitignore to .npmignore when installing if no .npmignore exists.
   if (srcFile === '.gitignore') {
     srcFile = '.npmignore';
   }
@@ -50,3 +52,6 @@ files.forEach(file => {
     });
   });
 });
+
+// Init commitizen.
+exec('commitizen init cz-conventional-changelog');
