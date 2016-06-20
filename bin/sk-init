@@ -8,14 +8,25 @@ const path = require('path');
 const pkg = require(path.join(process.cwd(), 'package.json'));
 const initDir = path.join(__dirname, '..', 'init');
 const files = [
+  // Common to the build module.
   '../.editorconfig',
   '../.eslintignore',
   '../.eslintrc',
   '../.gitignore',
+
+  // Tooling config.
+  './karma.conf.js',
+  './rollup.config.js',
+  './sauce.browsers.js',
+  './webpack.conf.js',
   '.travis.yml',
+
+  // Metadata.
+  'LICENSE',
   'README.md',
+
+  // Source.
   'src/index.js',
-  'src/version.js',
   'test/perf.js',
   'test/unit.js',
 ];
