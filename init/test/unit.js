@@ -1,3 +1,3 @@
-describe('<%= name %>', function <%= name %> () {
+describe('<%= name %>', () => {
 
 });
