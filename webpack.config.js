@@ -1,34 +1,46 @@
-const rollupBabel = require('rollup-plugin-babel');
-const rollupCommonjs = require('rollup-plugin-commonjs');
-const rollupNodeResolve = require('rollup-plugin-node-resolve');
-const rollupUglify = require('rollup-plugin-uglify');
-const path = require('path');
-const pkg = require(path.join(process.cwd(), 'package.json'));
-const shouldMinify = process.argv.indexOf('--min') !== -1;
-const presetEs2015 = require('babel-preset-es2015-rollup');
-const babel = rollupBabel({
-  presets: presetEs2015,
-});
-const plugins = [
-  babel,
-  rollupCommonjs(),
-  rollupNodeResolve(),
-];
+var camelCase = require('camelcase');
+var path = require('path');
+var webpack = require('webpack');
+var pkg = require(path.join(process.cwd(), 'package.json'));
+var shouldMininimize = process.argv.indexOf('--min') !== -1;
+var standardConfig = {
+  entry: {
+    'dist/bundle.js': './src/index.js'
+  },
+  output: {
+    path: './',
+    filename: '[name]',
+    libraryTarget: 'umd',
+    library: camelCase(pkg.name),
+    sourceMapFilename: '[file].map'
+  },
+  module: {
+    loaders: [{
+      test: /\.css$/,
+      loader: 'style!css'
+    }, {
+      test: /\.less$/,
+      loader: 'style!css!less'
+    }, {
+      loader: 'babel-loader',
+      test: /\.js$/,
+      query: {
+        presets: ['babel-preset-es2015', 'babel-preset-react']
+      }
+    }]
+  },
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin({
+      include: /\.min\.js$/,
+      minimize: true
+    })
+  ]
+};
 
-if (shouldMinify) {
-  plugins.push(rollupUglify());
+if (shouldMininimize) {
+  Object.assign(standardConfig.entry, {
+    'dist/bundle.min.js': './src/index.js'
+  });
 }
 
-const entry = pkg['jsnext:main'] || pkg.main || 'src/index.js';
-const moduleName = pkg['build:global'] || pkg.name;
-
-module.exports = {
-  dest: 'dist/index' + (shouldMinify ? '.min' : '') + '.js',
-  entry,
-  exports: 'named',
-  format: 'umd',
-  moduleName,
-  plugins,
-  sourceMap: true,
-  useStrict: false,
-};
+module.exports = standardConfig;
