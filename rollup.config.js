@@ -1,3 +1,4 @@
+const camelcase = require('camelcase');
 const rollupBabel = require('rollup-plugin-babel');
 const rollupCommonjs = require('rollup-plugin-commonjs');
 const rollupNodeResolve = require('rollup-plugin-node-resolve');
@@ -20,7 +21,7 @@ if (shouldMinify) {
 }
 
 const entry = pkg['jsnext:main'] || pkg.main || 'src/index.js';
-const moduleName = pkg['build:global'] || pkg.name;
+const moduleName = pkg['build:global'] || camelcase(pkg.name);
 
 module.exports = {
   dest: 'dist/index' + (shouldMinify ? '.min' : '') + '.js',

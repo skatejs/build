@@ -11,7 +11,7 @@
     "babel-preset-es2015-rollup": "1.1.1",
     "babel-preset-react": "^6.5.0",
     "benchmark": "2.1.0",
-    "camelcase": "3.0.0",
+    "camelcase": "^3.0.0",
     "commitizen": "^2.8.2",
     "css-loader": "0.23.1",
     "cz-conventional-changelog": "1.1.6",
