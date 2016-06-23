@@ -22,7 +22,7 @@
     "eslint-plugin-mocha": "3.0.0",
     "eslint-plugin-react": "5.2.2",
     "install": "0.8.1",
-    "karma": "0.13.22",
+    "karma": "1.0.0",
     "karma-chai-plugins": "0.7.0",
     "karma-chrome-launcher": "1.0.1",
     "karma-firefox-launcher": "1.0.0",
