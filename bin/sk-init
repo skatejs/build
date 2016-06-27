@@ -9,6 +9,9 @@ const path = require('path');
 const pkg = require(path.join(process.cwd(), 'package.json'));
 const initDir = path.join(__dirname, '..', 'init');
 const files = [
+  // Storybook
+  '.storybook/config.js',
+
   // Base editor / git config.
   '.editorconfig',
   '.eslintrc',
