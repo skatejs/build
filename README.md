@@ -27,10 +27,6 @@ Creates a bundle for your app / lib in `dist/`. Both minified and unminified fil
 
 Shorthand for using `git cz`.
 
-### `sk-dev`
-
-Runs [`storybook`](https://github.com/kadirahq/react-storybook) and serves your stories. Just because it's written in React doesn't mean it can't be reused inside of a Skate project. In fact, it's a testament to the fact that your project will work inside React.
-
 ### `sk-init`
 
 Templates out a new project. If run in an existing project, it won't overwrite any files and will create any files that don't already exist.
@@ -40,6 +36,10 @@ This command also sets up [`commitizen`](https://github.com/commitizen/cz-cli) a
 ### `sk-release`
 
 This is automatically called in CI upon a successful build to publish a release. Whether or not a release actually happens is up to semantic release.
+
+### `sk-server`
+
+Runs `webpack-dev-server`.
 
 ### `sk-tests
 
