@@ -36,7 +36,7 @@
     "less-loader": "2.2.3",
     "mocha": "2.5.3",
     "npm": "3.10.5",
-    "rollup": "0.34.0",
+    "rollup": "0.34.1",
     "rollup-plugin-babel": "2.6.1",
     "rollup-plugin-commonjs": "3.1.0",
     "rollup-plugin-node-resolve": "1.7.1",
