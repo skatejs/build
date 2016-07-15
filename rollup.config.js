@@ -7,6 +7,7 @@ const path = require('path');
 const pkg = require(path.join(process.cwd(), 'package.json'));
 const shouldMinify = process.argv.indexOf('--min') !== -1;
 const presetEs2015 = require('babel-preset-es2015-rollup');
+
 const babel = rollupBabel({
   presets: presetEs2015,
 });
@@ -20,13 +21,15 @@ if (shouldMinify) {
   plugins.push(rollupUglify());
 }
 
+const deps = Object.keys(pkg.dependencies || []);
 const entry = pkg['jsnext:main'] || pkg.main || 'src/index.js';
 const moduleName = pkg['build:global'] || camelcase(pkg.name);
 
 module.exports = {
-  dest: 'dist/index' + (shouldMinify ? '.min' : '') + '.js',
+  dest: `dist/index${shouldMinify ? '.min' : ''}.js`,
   entry,
   exports: 'named',
+  external: id => deps.indexOf(id) > -1,
   format: 'umd',
   moduleName,
   plugins,
