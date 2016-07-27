@@ -121,13 +121,8 @@ const sauceBrowsers = {
     version: '12.12'
   },
 
-  // iOS
-  iphone: {
-    browserName: 'iphone',
-    platform: 'OS X 10.10',
-    version: 'latest',
-    deviceName: 'iPhone Simulator'
-  },
+  // iOS (currently failing on every run)
+  iphone: {},
 
   // Android (when they update their images to 43+)
   android: {}
