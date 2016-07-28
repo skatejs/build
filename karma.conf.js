@@ -1,5 +1,5 @@
 const webpackConfig = require('./webpack.config');
-const sauceBrowsers = require('./sauce.browsers');
+const browserstackBrowsers = require('./browserstack.browsers');
 
 module.exports = function (config) {
   // list of files / patterns to load in the browser
@@ -10,13 +10,13 @@ module.exports = function (config) {
   // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
   // webpack will trace and watch all dependancies
   var preprocessors = {
-    'test/unit.js': [ 'webpack', 'sourcemap' ]
+    'test/unit.js': ['webpack', 'sourcemap']
   };
 
   if (process.argv.indexOf('--perf') > -1) {
-    files = [ require.resolve('../benchmark/benchmark.js'), 'test/perf.js' ];
+    files = [require.resolve('../benchmark/benchmark.js'), 'test/perf.js'];
     preprocessors = {
-      'test/perf.js': [ 'webpack', 'sourcemap' ]
+      'test/perf.js': ['webpack', 'sourcemap']
     };
   }
 
@@ -27,7 +27,7 @@ module.exports = function (config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: [ 'mocha', 'chai', 'sinon-chai' ],
+    frameworks: ['mocha', 'chai', 'sinon-chai'],
 
     // list of files / patterns to load in the browser
     files: files,
@@ -43,13 +43,13 @@ module.exports = function (config) {
     // webpack watches dependencies
     webpack: Object.assign({}, webpackConfig, {
       devtool: 'inline-source-map',
-      entry: undefined
+      entry: undefined,
     }),
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: [ 'progress' ],
+    reporters: ['progress'],
 
     // web server port
     port: 9876,
@@ -66,7 +66,7 @@ module.exports = function (config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: [ 'Chrome', 'Firefox' ],
+    browsers: ['Chrome', 'Firefox'],
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
@@ -74,19 +74,18 @@ module.exports = function (config) {
 
     // Concurrency level
     // how many browser should be started simultaneous
-    concurrency: Infinity
-  }, process.argv.indexOf('--saucelabs') === -1 ? {} : {
-    sauceLabs: {
-      testName: 'Unit Tests',
-      recordScreenshots: false,
-      connectOptions: { verbose: true }
+    concurrency: Infinity,
+  }, process.argv.indexOf('--browserstack') === -1 ? {} : {
+    browserStack: {
+      username: process.env.BROWSERSTACK_USERNAME,
+      accessKey: process.env.BROWSERSTACK_KEY,
+      name: 'Unit Tests',
     },
-    customLaunchers: sauceBrowsers,
-    browsers: Object.keys(sauceBrowsers),
+    customLaunchers: browserstackBrowsers,
+    browsers: Object.keys(browserstackBrowsers),
     captureTimeout: 120000,
-    reporters: [ 'saucelabs', 'dots' ],
+    reporters: ['dots'],
     autoWatch: false,
     concurrency: 5,
-    client: {}
   }));
 };

@@ -17,7 +17,7 @@ const files = [
   // Tooling config.
   './karma.conf.js',
   './rollup.config.js',
-  './sauce.browsers.js',
+  './browserstack.browsers.js',
   './webpack.config.js',
   '.travis.yml',
 
