@@ -17,7 +17,7 @@ sk-init
 
 ## Commands
 
-The following commnads are available:
+The following commands are available:
 
 ### `sk-bundle`
 
@@ -41,7 +41,7 @@ This is automatically called in CI upon a successful build to publish a release.
 
 Runs `webpack-dev-server`.
 
-### `sk-tests
+### `sk-tests`
 
 Runs the tests once in Karma.
 
