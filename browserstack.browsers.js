@@ -97,18 +97,6 @@ const browserstackBrowsers = {
     os_version: '8.1',
     browser_version: '11',
   },
-  // internet_explorer_10: {
-  //   browser: 'ie',
-  //   os: 'WINDOWS',
-  //   os_version: '8',
-  //   browser_version: '10',
-  // },
-  // internet_explorer_9: {
-  //   browser: 'ie',
-  //   os: 'WINDOWS',
-  //   os_version: '7',
-  //   browser_version: '9',
-  // },
 
   // Edge
   microsoftedge_latest: {
@@ -117,27 +105,12 @@ const browserstackBrowsers = {
     os_version: '10',
   },
 
-  // Opera (disabled for now)
-  // opera_12: {
-  //   browser: 'opera',
-  //   os: 'WINDOWS',
-  //   os_version: '8.1',
-  //   browser_version: '12.16',
-  // },
-
   // iOS
   iphone: {
     os: 'ios',
     os_version: '9.1',
     device: 'iPhone 6S',
   },
-
-  // Android (disabled for now)
-  // android: {
-  //   os: 'android',
-  //   os_version: '4.4',
-  //   device: 'Samsung Galaxy S5',
-  // },
 };
 
 Object.keys(browserstackBrowsers).forEach((key) => {
