@@ -1,10 +1,5 @@
 const browserstackBrowsers = {
-  // Chrome
-  // chrome_latest_linux: {
-  //   browserName: 'chrome',
-  //   platform: 'Linux',
-  //   version: 'latest'
-  // },
+  // Chrome (BrowserStack doesn't support Linux)
   chrome_latest_windows: {
     browser: 'chrome',
     os: 'WINDOWS',
@@ -40,12 +35,7 @@ const browserstackBrowsers = {
     browser_version: '48.0',
   },
 
-  // Firefox
-  // firefox_latest_linux: {
-  //   browserName: 'firefox',
-  //   platform: 'Linux',
-  //   version: 'latest'
-  // },
+  // Firefox (BrowserStack doesn't support Linux)
   firefox_latest_windows: {
     browser: 'firefox',
     os: 'WINDOWS',
@@ -100,25 +90,25 @@ const browserstackBrowsers = {
     os_version: 'El Capitan',
   },
 
-  // IE
+  // IE (IE 8/9/10 not supported)
   internet_explorer_11: {
     browser: 'ie',
     os: 'WINDOWS',
     os_version: '8.1',
     browser_version: '11',
   },
-  internet_explorer_10: {
-    browser: 'ie',
-    os: 'WINDOWS',
-    os_version: '8',
-    browser_version: '10',
-  },
-  internet_explorer_9: {
-    browser: 'ie',
-    os: 'WINDOWS',
-    os_version: '7',
-    browser_version: '9',
-  },
+  // internet_explorer_10: {
+  //   browser: 'ie',
+  //   os: 'WINDOWS',
+  //   os_version: '8',
+  //   browser_version: '10',
+  // },
+  // internet_explorer_9: {
+  //   browser: 'ie',
+  //   os: 'WINDOWS',
+  //   os_version: '7',
+  //   browser_version: '9',
+  // },
 
   // Edge
   microsoftedge_latest: {
@@ -127,13 +117,13 @@ const browserstackBrowsers = {
     os_version: '10',
   },
 
-  // Opera
-  opera_12: {
-    browser: 'opera',
-    os: 'WINDOWS',
-    os_version: '8.1',
-    browser_version: '12.16',
-  },
+  // Opera (disabled for now)
+  // opera_12: {
+  //   browser: 'opera',
+  //   os: 'WINDOWS',
+  //   os_version: '8.1',
+  //   browser_version: '12.16',
+  // },
 
   // iOS
   iphone: {
@@ -142,12 +132,12 @@ const browserstackBrowsers = {
     device: 'iPhone 6S',
   },
 
-  // Android
-  android: {
-    os: 'android',
-    os_version: '4.4',
-    device: 'Samsung Galaxy S5',
-  },
+  // Android (disabled for now)
+  // android: {
+  //   os: 'android',
+  //   os_version: '4.4',
+  //   device: 'Samsung Galaxy S5',
+  // },
 };
 
 Object.keys(browserstackBrowsers).forEach((key) => {

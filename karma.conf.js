@@ -83,9 +83,16 @@ module.exports = function (config) {
     },
     customLaunchers: browserstackBrowsers,
     browsers: Object.keys(browserstackBrowsers),
-    captureTimeout: 120000,
+    timeout: 300000,
+    retryLimit: 3,
     reporters: ['dots'],
     autoWatch: false,
     concurrency: 5,
+
+    // to avoid DISCONNECTED messages when connecting to BrowserStack
+    browserDisconnectTimeout: 10000,
+    browserDisconnectTolerance: 1,
+    browserNoActivityTimeout: 240000,
+    captureTimeout: 240000,
   }));
 };
