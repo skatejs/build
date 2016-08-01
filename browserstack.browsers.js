@@ -1,4 +1,15 @@
 const browserstackBrowsers = {
+  // iOS
+  iphone: {
+    os: 'ios',
+    os_version: '9.1',
+    device: 'iPhone 6S',
+  },
+
+  // Important: make sure mobile browsers are first,
+  // to avoid viewport overflow isses after lots of
+  // browsers are run.
+
   // Chrome (BrowserStack doesn't support Linux)
   chrome_latest_windows: {
     browser: 'chrome',
@@ -103,13 +114,6 @@ const browserstackBrowsers = {
     browser: 'edge',
     os: 'WINDOWS',
     os_version: '10',
-  },
-
-  // iOS
-  iphone: {
-    os: 'ios',
-    os_version: '9.1',
-    device: 'iPhone 6S',
   },
 };
 
