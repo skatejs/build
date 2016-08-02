@@ -115,6 +115,14 @@ const browserstackBrowsers = {
     os: 'WINDOWS',
     os_version: '10',
   },
+
+  // Opera
+  opera_12: {
+    browser: 'opera',
+    os: 'WINDOWS',
+    os_version: '8.1',
+    browser_version: '12.16',
+  },
 };
 
 Object.keys(browserstackBrowsers).forEach((key) => {
