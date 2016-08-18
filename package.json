@@ -23,7 +23,7 @@
     "install": "0.8.1",
     "karma": "1.2.0",
     "karma-chai-plugins": "0.7.0",
-    "karma-chrome-launcher": "1.0.1",
+    "karma-chrome-launcher": "2.0.0",
     "karma-firefox-launcher": "1.0.0",
     "karma-mocha": "1.1.1",
     "karma-opera-launcher": "1.0.0",
