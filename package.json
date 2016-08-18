@@ -42,7 +42,7 @@
     "rollup-plugin-uglify": "1.0.1",
     "semantic-release": "^4.3.5",
     "style-loader": "0.13.1",
-    "webpack": "1.13.1",
+    "webpack": "1.13.2",
     "webpack-dev-server": "1.14.1"
   },
   "bin": {
