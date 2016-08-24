@@ -18,7 +18,7 @@
     "eslint-config-airbnb": "10.0.0",
     "eslint-plugin-import": "1.14.0",
     "eslint-plugin-jsx-a11y": "2.1.0",
-    "eslint-plugin-mocha": "4.3.0",
+    "eslint-plugin-mocha": "4.4.0",
     "eslint-plugin-react": "6.1.2",
     "install": "0.8.1",
     "karma": "1.2.0",
