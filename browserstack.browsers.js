@@ -61,37 +61,37 @@ const browserstackBrowsers = {
     browser: 'firefox',
     os: 'OS X',
     os_version: 'El Capitan',
-    browser_version: '45.0',
+    browser_version: '47.0',
   },
   firefox_latest_2: {
     browser: 'firefox',
     os: 'OS X',
     os_version: 'El Capitan',
-    browser_version: '44.0',
+    browser_version: '46.0',
   },
   firefox_latest_3: {
     browser: 'firefox',
     os: 'OS X',
     os_version: 'El Capitan',
-    browser_version: '43.0',
+    browser_version: '45.0',
   },
   firefox_latest_4: {
     browser: 'firefox',
     os: 'OS X',
     os_version: 'El Capitan',
-    browser_version: '42.0',
+    browser_version: '44.0',
   },
   firefox_latest_5: {
     browser: 'firefox',
     os: 'OS X',
     os_version: 'El Capitan',
-    browser_version: '41.0',
+    browser_version: '43.0',
   },
   firefox_latest_6: {
     browser: 'firefox',
     os: 'OS X',
     os_version: 'El Capitan',
-    browser_version: '40.0',
+    browser_version: '42.0',
   },
 
   // Safari (<= 8 is severely crippled)
