@@ -21,7 +21,8 @@ if (shouldMinify) {
   plugins.push(rollupUglify());
 }
 
-const deps = Object.keys(pkg.dependencies || []);
+const externalDeps = Object.assign({}, pkg.dependencies, pkg.peerDependencies);
+const deps = Object.keys(externalDeps);
 const entry = pkg['jsnext:main'] || pkg.main || 'src/index.js';
 const moduleName = pkg['build:global'] || camelcase(pkg.name);
 
