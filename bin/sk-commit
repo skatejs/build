@@ -1,2 +1,2 @@
 #!/bin/sh
-./node_modules/.bin/git-cz
+sk-lint && ./node_modules/.bin/git-cz

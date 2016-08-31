@@ -20,6 +20,7 @@
     "eslint-plugin-jsx-a11y": "2.2.0",
     "eslint-plugin-mocha": "4.5.1",
     "eslint-plugin-react": "6.2.0",
+    "eslint-friendly-formatter": "^2.0.6",
     "install": "0.8.1",
     "karma": "1.2.0",
     "karma-chai-plugins": "0.7.0",
@@ -52,7 +53,8 @@
     "sk-release": "bin/sk-release",
     "sk-server": "bin/sk-server",
     "sk-tests": "bin/sk-tests",
-    "sk-tests-watch": "bin/sk-tests-watch"
+    "sk-tests-watch": "bin/sk-tests-watch",
+    "sk-lint": "bin/sk-lint"
   },
   "scripts": {
     "test": "echo \"no test specified\""
