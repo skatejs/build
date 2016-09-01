@@ -101,7 +101,7 @@ const browserstackBrowsers = {
     os_version: 'El Capitan',
   },
 
-  // IE (IE 8/9/10 not supported)
+  // IE
   internet_explorer_9: {
     browser: 'ie',
     os: 'WINDOWS',
