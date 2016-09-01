@@ -102,6 +102,18 @@ const browserstackBrowsers = {
   },
 
   // IE (IE 8/9/10 not supported)
+  internet_explorer_9: {
+    browser: 'ie',
+    os: 'WINDOWS',
+    os_version: '7',
+    browser_version: '9',
+  },
+  internet_explorer_10: {
+    browser: 'ie',
+    os: 'WINDOWS',
+    os_version: '8',
+    browser_version: '10',
+  },
   internet_explorer_11: {
     browser: 'ie',
     os: 'WINDOWS',
