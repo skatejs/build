@@ -1,2 +1,2 @@
 #!/bin/sh
-eslint . --ext .js,.jsx --format 'node_modules/eslint-friendly-formatter'
+eslint src/ --ext .js,.jsx --format 'node_modules/eslint-friendly-formatter'
