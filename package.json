@@ -29,7 +29,7 @@
     "karma-mocha": "1.1.1",
     "karma-opera-launcher": "1.0.0",
     "karma-safari-launcher": "1.0.0",
-    "karma-browserstack-launcher": "1.1.0",
+    "karma-browserstack-launcher": "1.1.1",
     "karma-sourcemap-loader": "0.3.7",
     "karma-webpack": "1.8.0",
     "less": "2.7.1",
