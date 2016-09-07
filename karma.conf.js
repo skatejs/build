@@ -85,7 +85,7 @@ module.exports = function (config) {
     browsers: Object.keys(browserstackBrowsers),
     timeout: 300000,
     retryLimit: 3,
-    reporters: ['dots'],
+    reporters: ['dots', 'BrowserStack'],
     autoWatch: false,
     concurrency: 5,
 
