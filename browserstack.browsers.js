@@ -1,9 +1,9 @@
 const browserstackBrowsers = {
   // iOS
-  iphone: {
+  ipad: {
     os: 'ios',
-    os_version: '9.1',
-    device: 'iPhone 6S',
+    os_version: '9.3',
+    device: 'iPad Pro',
   },
 
   // Important: make sure mobile browsers are first,
