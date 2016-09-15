@@ -85,7 +85,7 @@ module.exports = function (config) {
     retryLimit: 3,
     reporters: ['dots', 'testingbot'],
     autoWatch: false,
-    concurrency: 5,
+    concurrency: 4,
 
     // to avoid DISCONNECTED messages when connecting to Testingbot
     browserDisconnectTimeout: 10000,
