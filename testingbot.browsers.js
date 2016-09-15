@@ -1,14 +1,14 @@
 // Check out https://testingbot.com/support/getting-started/browsers.html for all browser possibilities
 const tbBrowsers = {
   // iOS
-  ipad: {
-    platform: 'CAPITAN',
-    version: '9.3',
-    browserName: 'safari',
-    deviceName: 'iPad 2',
-    platformName: 'iOS',
-    deviceOrientation: 'portrait',
-  },
+  // ipad: {
+  //   platform: 'CAPITAN',
+  //   version: '9.3',
+  //   browserName: 'safari',
+  //   deviceName: 'iPad 2',
+  //   platformName: 'iOS',
+  //   deviceOrientation: 'portrait',
+  // },
 
   // Important: make sure mobile browsers are first,
   // to avoid viewport overflow isses after lots of
