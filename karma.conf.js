@@ -1,5 +1,5 @@
 const webpackConfig = require('./webpack.config');
-const browserstackBrowsers = require('./browserstack.browsers');
+const testingbotBrowsers = require('./testingbot.browsers');
 
 module.exports = function (config) {
   // list of files / patterns to load in the browser
@@ -75,20 +75,19 @@ module.exports = function (config) {
     // Concurrency level
     // how many browser should be started simultaneous
     concurrency: Infinity,
-  }, process.argv.indexOf('--browserstack') === -1 ? {} : {
-    browserStack: {
-      username: process.env.BROWSERSTACK_USERNAME,
-      accessKey: process.env.BROWSERSTACK_KEY,
-      name: 'Unit Tests',
+  }, process.argv.indexOf('--testingbot') === -1 ? {} : {
+    testingbot: {
+      apiKey: process.env.TESTINGBOT_KEY,
+      apiSecret: process.env.TESTINGBOT_SECRET,
     },
-    customLaunchers: browserstackBrowsers,
-    browsers: Object.keys(browserstackBrowsers),
+    customLaunchers: testingbotBrowsers,
+    browsers: Object.keys(testingbotBrowsers),
     retryLimit: 3,
-    reporters: ['dots', 'BrowserStack'],
+    reporters: ['dots', 'testingbot'],
     autoWatch: false,
-    concurrency: 5,
+    concurrency: 4,
 
-    // to avoid DISCONNECTED messages when connecting to BrowserStack
+    // to avoid DISCONNECTED messages when connecting to Testingbot
     browserDisconnectTimeout: 10000,
     browserDisconnectTolerance: 5,
     captureTimeout: 120000,
