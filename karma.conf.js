@@ -1,22 +1,22 @@
+const browsers = require('./src/browsers');
 const webpackConfig = require('./webpack.config');
-const testingbotBrowsers = require('./testingbot.browsers');
 
 module.exports = function (config) {
   // list of files / patterns to load in the browser
   // all dependancies should be traced through here
-  var files = ['test/unit.js'];
+  let files = ['test/unit.js'];
 
   // preprocess matching files before serving them to the browser
   // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
   // webpack will trace and watch all dependancies
-  var preprocessors = {
-    'test/unit.js': ['webpack', 'sourcemap']
+  let preprocessors = {
+    'test/unit.js': ['webpack', 'sourcemap'],
   };
 
   if (process.argv.indexOf('--perf') > -1) {
     files = [require.resolve('../benchmark/benchmark.js'), 'test/perf.js'];
     preprocessors = {
-      'test/perf.js': ['webpack', 'sourcemap']
+      'test/perf.js': ['webpack', 'sourcemap'],
     };
   }
 
@@ -30,13 +30,13 @@ module.exports = function (config) {
     frameworks: ['mocha', 'chai', 'sinon-chai'],
 
     // list of files / patterns to load in the browser
-    files: files,
+    files,
 
     // list of files to exclude
     exclude: [],
 
     // list of preprocessors
-    preprocessors: preprocessors,
+    preprocessors,
 
     // karma watches the test entry points
     // (you don't need to specify the entry option)
@@ -75,15 +75,12 @@ module.exports = function (config) {
     // Concurrency level
     // how many browser should be started simultaneous
     concurrency: Infinity,
-  }, process.argv.indexOf('--testingbot') === -1 ? {} : {
-    testingbot: {
-      apiKey: process.env.TESTINGBOT_KEY,
-      apiSecret: process.env.TESTINGBOT_SECRET,
-    },
-    customLaunchers: testingbotBrowsers,
-    browsers: Object.keys(testingbotBrowsers),
+  }, process.argv.indexOf('--all') === -1 ? {} : {
+    sauceLabs: {},
+    customLaunchers: browsers,
+    browsers: Object.keys(browsers),
     retryLimit: 3,
-    reporters: ['dots', 'testingbot'],
+    reporters: ['dots', 'saucelabs'],
     autoWatch: false,
     concurrency: 4,
 
