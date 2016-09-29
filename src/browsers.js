@@ -15,6 +15,11 @@ const tbBrowsers = {
   // browsers are run.
 
   // Chrome
+  chrome_canary_osx: {
+    browserName: 'chrome',
+    platform: 'OS X 10.11',
+    version: 'dev',
+  },
   chrome_latest_osx: {
     browserName: 'chrome',
     platform: 'OS X 10.11',
