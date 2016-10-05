@@ -55,6 +55,7 @@
     "sk-server": "bin/sk-server",
     "sk-tests": "bin/sk-tests",
     "sk-tests-watch": "bin/sk-tests-watch",
+    "sk-tests-perf": "bin/sk-tests-perf",
     "sk-lint": "bin/sk-lint"
   },
   "scripts": {

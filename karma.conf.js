@@ -14,7 +14,7 @@ module.exports = function (config) {
   };
 
   if (process.argv.indexOf('--perf') > -1) {
-    files = [require.resolve('../benchmark/benchmark.js'), 'test/perf.js'];
+    files = ['test/perf.js'];
     preprocessors = {
       'test/perf.js': ['webpack', 'sourcemap'],
     };
