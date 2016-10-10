@@ -39,6 +39,7 @@ const standardConfig = {
     }, {
       loader: 'babel-loader',
       test: /\.js$/,
+      exclude: /node_modules/,
       query: {
         presets: ['babel-preset-es2015', 'babel-preset-react'],
       },
