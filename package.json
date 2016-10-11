@@ -35,6 +35,8 @@
     "karma-webpack": "1.8.0",
     "less": "2.7.1",
     "less-loader": "2.2.3",
+    "lodash": "^4.16.4",
+    "mkdirp": "^0.5.1",
     "mocha": "3.1.2",
     "npm": "3.10.8",
     "rollup": "0.36.3",

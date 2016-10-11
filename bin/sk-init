@@ -30,7 +30,7 @@ const files = [
   'test/unit.js',
 ];
 
-files.forEach(file => {
+files.forEach((file) => {
   let srcFile = file;
 
   // NPM Renames .gitignore to .npmignore when installing if no .npmignore exists.
@@ -42,7 +42,7 @@ files.forEach(file => {
   const dst = path.join(process.cwd(), file);
 
   fs.readFile(src, (err, content) => {
-    fs.exists(dst, exists => {
+    fs.exists(dst, (exists) => {
       if (!exists) {
         mkdirp(path.dirname(dst), () => {
           fs.writeFile(dst, lodash.template(content)(pkg));
