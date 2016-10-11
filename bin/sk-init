@@ -11,7 +11,6 @@ const initDir = path.join(__dirname, '..', 'init');
 const files = [
   // Base editor / git config.
   '.editorconfig',
-  '.eslintrc',
   '.gitignore',
 
   // Tooling config.
