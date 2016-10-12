@@ -1,2 +1,4 @@
 #!/bin/sh
-semantic-release pre && npm publish && semantic-release post
+./node_modules/semantic-release/bin/semantic-release.js pre
+npm publish
+./node_modules/semantic-release/bin/semantic-release.js post

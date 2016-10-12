@@ -26,7 +26,7 @@ const files = [
   // Source.
   'src/index.js',
   'test/perf.js',
-  'test/unit.js',
+  'test/unit.js'
 ];
 
 files.forEach((file) => {

@@ -1,2 +1,2 @@
 #!/bin/sh
-semistandard
+./node_modules/semistandard/bin/cmd.js

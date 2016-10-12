@@ -1,2 +1,3 @@
 #!/bin/sh
-sk-lint && ./node_modules/.bin/git-cz
+sk-lint
+./node_modules/commitizen/bin/git-cz

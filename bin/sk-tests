@@ -1,2 +1,3 @@
 #!/bin/sh
-sk-lint && karma start --single-run "$@"
+sk-lint
+./node_modules/karma/bin/karma start --single-run "$@"

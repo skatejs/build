@@ -1,2 +1,2 @@
 #!/bin/sh
-karma start "$@"
+./node_modules/karma/bin/karma start "$@"
