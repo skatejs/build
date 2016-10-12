@@ -1,2 +1,2 @@
 #!/bin/sh
-karma start --single-run "$@"
+sk-lint && karma start --single-run "$@"
