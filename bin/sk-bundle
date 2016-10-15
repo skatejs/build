@@ -1,6 +1,14 @@
 #!/bin/sh
-rm -rf dist/
-./node_modules/rollup/bin/rollup --config "$@"
-./node_modules/rollup/bin/rollup --config --min "$@"
-./node_modules/webpack/bin/webpack.js --config webpack.config.js
 
+rm -rf dist/
+
+if [ -f ./rollup.config.js ];
+then
+  ./node_modules/rollup/bin/rollup --config rollup.config.js "$@"
+  ./node_modules/rollup/bin/rollup --config rollup.config.js --min "$@"
+fi
+
+if [ -f ./webpack.config.js ];
+then
+  ./node_modules/webpack/bin/webpack.js --config webpack.config.js "$@"
+fi
