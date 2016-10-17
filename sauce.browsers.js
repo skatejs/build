@@ -123,10 +123,10 @@ const sauceBrowsers = {
 
   // iOS
   iphone: {
-    browserName: 'iphone',
-    platform: 'OS X 10.10',
+    browserName: 'Safari',
+    platform: 'iOS 9.3',
     version: 'latest',
-    deviceName: 'iPhone Simulator'
+    deviceName: 'iPhone 6s Simulator'
   },
 
   // Android (when they update their images to 43+)
