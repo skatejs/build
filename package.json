@@ -21,6 +21,7 @@
     "karma-chai-plugins": "0.8.0",
     "karma-chrome-launcher": "2.0.0",
     "karma-firefox-launcher": "1.0.0",
+    "karma-jsdom-launcher": "^4.0.0",
     "karma-mocha": "1.2.0",
     "karma-opera-launcher": "1.0.0",
     "karma-safari-launcher": "1.0.0",
@@ -80,8 +81,5 @@
   },
   "semistandard": {
     "parser": "babel-eslint"
-  },
-  "devDependencies": {
-    "karma-jsdom-launcher": "^4.0.0"
   }
 }
