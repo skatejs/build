@@ -14,7 +14,7 @@ script:
   - if [ "<%= "${TRAVIS_SECURE_ENV_VARS}" %>" = "true" ]; then
     npm test -- --all;
     else
-    npm test -- --browsers Firefox;
+    npm test;
     fi
 after_success:
   - sk-release
