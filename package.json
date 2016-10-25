@@ -80,5 +80,8 @@
   },
   "semistandard": {
     "parser": "babel-eslint"
+  },
+  "devDependencies": {
+    "karma-jsdom-launcher": "^4.0.0"
   }
 }

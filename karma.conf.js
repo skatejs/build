@@ -66,7 +66,7 @@ module.exports = function (config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome', 'Firefox'],
+    browsers: ['jsdom'],
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
@@ -78,7 +78,7 @@ module.exports = function (config) {
   }, process.argv.indexOf('--all') === -1 ? {} : {
     sauceLabs: {},
     customLaunchers: browsers,
-    browsers: Object.keys(browsers),
+    browsers: Object.keys(browsers).concat('jsdom'),
     retryLimit: 3,
     reporters: ['dots', 'saucelabs'],
     autoWatch: false,
