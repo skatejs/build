@@ -14,6 +14,7 @@ const files = [
   '.gitignore',
 
   // Tooling config.
+  './karma.browsers.js',
   './karma.conf.js',
   './rollup.config.js',
   './webpack.config.js',

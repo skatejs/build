@@ -1,5 +1,4 @@
-// Check out https://testingbot.com/support/getting-started/browsers.html for all browser possibilities
-const tbBrowsers = {
+const browsers = {
   // iOS
   // ipad: {
   //   platform: 'OS X 10.11',
@@ -75,8 +74,8 @@ const tbBrowsers = {
   },
 };
 
-Object.keys(tbBrowsers).forEach((key) => {
-  tbBrowsers[key].base = 'SauceLabs';
+Object.keys(browsers).forEach((key) => {
+  browsers[key].base = 'SauceLabs';
 });
 
-module.exports = tbBrowsers;
+module.exports = browsers;
