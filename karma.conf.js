@@ -1,5 +1,7 @@
-const browsers = require('./src/browsers');
-const webpackConfig = require('./webpack.config');
+const cwd = process.cwd();
+const path = require('path');
+const browsers = require(path.join(cwd, 'karma.browsers'));
+const webpackConfig = require(path.join(cwd, 'webpack.config'));
 
 module.exports = function (config) {
   // list of files / patterns to load in the browser
@@ -66,7 +68,7 @@ module.exports = function (config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['jsdom'],
+    browsers: ['Firefox'],
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
@@ -78,7 +80,7 @@ module.exports = function (config) {
   }, process.argv.indexOf('--all') === -1 ? {} : {
     sauceLabs: {},
     customLaunchers: browsers,
-    browsers: Object.keys(browsers).concat('jsdom'),
+    browsers: Object.keys(browsers),
     retryLimit: 3,
     reporters: ['dots', 'saucelabs'],
     autoWatch: false,
