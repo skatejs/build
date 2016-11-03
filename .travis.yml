@@ -8,6 +8,9 @@ notifications:
 node_js: stable
 before_script:
   - npm prune
+install:
+  - npm install -g yarn
+  - yarn install
 after_success:
   - ./bin/sk-release
 branches:
