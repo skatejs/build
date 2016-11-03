@@ -55,16 +55,6 @@ const browsers = {
     platform: 'Windows 10',
     version: '11',
   },
-  internet_explorer_10: {
-    browserName: 'internet explorer',
-    platform: 'Windows 8',
-    version: '10',
-  },
-  internet_explorer_9: {
-    browserName: 'internet explorer',
-    platform: 'Windows 7',
-    version: '9',
-  },
 
   // Edge
   microsoftedge_latest: {
