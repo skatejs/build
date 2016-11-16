@@ -41,7 +41,7 @@ const standardConfig = {
       test: /\.js$/,
       exclude: /node_modules/,
       query: {
-        plugins: ['transform-class-properties'],
+        plugins: ['transform-class-properties', 'transform-flow-strip-types'],
         presets: ['babel-preset-es2015', 'babel-preset-react'],
       },
     }],

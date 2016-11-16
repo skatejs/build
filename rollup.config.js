@@ -10,6 +10,7 @@ const presetEs2015 = require('babel-preset-es2015-rollup');
 
 const babel = rollupBabel({
   presets: presetEs2015,
+  plugins: ['transform-flow-strip-types']
 });
 const plugins = [
   babel,
