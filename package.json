@@ -40,7 +40,7 @@
     "rollup-plugin-commonjs": "5.0.5",
     "rollup-plugin-node-resolve": "2.0.0",
     "rollup-plugin-uglify": "1.0.1",
-    "semantic-release": "^4.3.5",
+    "semantic-release": "^6.3.2",
     "semistandard": "^9.0.0",
     "style-loader": "0.13.1",
     "webpack": "1.13.3",
