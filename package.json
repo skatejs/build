@@ -33,7 +33,7 @@
     "less-loader": "2.2.3",
     "lodash": "^4.16.4",
     "mkdirp": "^0.5.1",
-    "mocha": "3.1.2",
+    "mocha": "3.2.0",
     "npm": "4.0.3",
     "rollup": "0.36.4",
     "rollup-plugin-babel": "2.6.1",
