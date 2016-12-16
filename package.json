@@ -34,7 +34,7 @@
     "lodash": "^4.16.4",
     "mkdirp": "^0.5.1",
     "mocha": "3.2.0",
-    "npm": "4.0.3",
+    "npm": "4.0.5",
     "rollup": "0.37.0",
     "rollup-plugin-babel": "2.7.1",
     "rollup-plugin-commonjs": "5.0.5",
