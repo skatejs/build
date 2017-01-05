@@ -29,7 +29,7 @@
     "karma-saucelabs-launcher": "0.0.0",
     "karma-sourcemap-loader": "0.3.7",
     "karma-webpack": "1.8.1",
-    "less": "2.7.1",
+    "less": "2.7.2",
     "less-loader": "2.2.3",
     "lodash": "^4.16.4",
     "mkdirp": "^0.5.1",
