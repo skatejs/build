@@ -55,7 +55,8 @@
     "sk-tests": "bin/sk-tests",
     "sk-tests-watch": "bin/sk-tests-watch",
     "sk-tests-perf": "bin/sk-tests-perf",
-    "sk-lint": "bin/sk-lint"
+    "sk-lint": "bin/sk-lint",
+    "sk-lint-fix": "bin/sk-lint-fix"
   },
   "scripts": {
     "test": "echo \"no test specified\""

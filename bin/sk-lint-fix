@@ -1,0 +1,2 @@
+#!/bin/sh
+./node_modules/semistandard/bin/cmd.js --fix
