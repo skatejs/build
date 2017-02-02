@@ -49,3 +49,11 @@ Runs the tests once in Karma.
 
 Runs the tests in watch mode for development.
 
+### `sk-lint`
+
+Runs eslint semistandard rules to check code styleguide
+
+### `sk-lint-fix`
+
+Automatically fixes eslint rule violations.
+
