@@ -44,7 +44,7 @@
     "semistandard": "^9.0.0",
     "style-loader": "0.13.1",
     "webpack": "1.14.0",
-    "webpack-dev-server": "1.16.2"
+    "webpack-dev-server": "2.3.0"
   },
   "bin": {
     "sk-bundle": "bin/sk-bundle",
