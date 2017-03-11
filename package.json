@@ -37,7 +37,7 @@
     "npm": "4.4.1",
     "rollup": "0.41.5",
     "rollup-plugin-babel": "2.7.1",
-    "rollup-plugin-commonjs": "8.0.0",
+    "rollup-plugin-commonjs": "8.0.1",
     "rollup-plugin-node-resolve": "2.0.0",
     "rollup-plugin-uglify": "1.0.1",
     "semantic-release": "^6.3.2",
