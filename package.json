@@ -35,7 +35,7 @@
     "mkdirp": "^0.5.1",
     "mocha": "3.2.0",
     "npm": "4.4.1",
-    "rollup": "0.41.5",
+    "rollup": "0.41.6",
     "rollup-plugin-babel": "2.7.1",
     "rollup-plugin-commonjs": "8.0.2",
     "rollup-plugin-node-resolve": "2.0.0",
