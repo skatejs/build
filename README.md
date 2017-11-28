@@ -1,5 +1,7 @@
-SkateJS build
-=============
+[DEPRECATED] - SkateJS build
+============================
+
+_This is no longer used by the SkateJS projects as we've found better alternatives._
 
 This is the build that all SkateJS repositories should use. You can use this in any project you want, though.
 
