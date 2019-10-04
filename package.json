@@ -15,7 +15,7 @@
     "babel-preset-react": "^6.5.0",
     "camelcase": "^4.0.0",
     "commitizen": "^2.8.2",
-    "css-loader": "0.27.3",
+    "css-loader": "0.28.0",
     "cz-conventional-changelog": "2.0.0",
     "install": "0.8.8",
     "karma": "1.5.0",
